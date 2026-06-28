@@ -1,7 +1,7 @@
 [project]
 name = "portafolio"
 version = "0.1.0"
-description = "Add your description here"
+description = "Personal portfolio from Juan Salazar Dev, this SPA is used to expose all the development that i have along all my way in this development world"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
