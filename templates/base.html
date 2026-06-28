@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portafolio</title>
+    <link rel="icon" type="image/png" href="/static/images/pageIcon.png">
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+                <div class="header-brand">
+                    <p class="eyebrow">Juan Pablo Salazar</p>
+                    <p class="brand-sub">Dev Software · RPA · Datos</p>
+                </div>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                    ☰
+                </button>
+            </div>
+    
+            <nav class="nav-links header-nav" id="main-nav" aria-label="Navegación principal">
+                <a href="#inicio">Inicio</a>
+                <a href="#experiencia">Experiencia</a>
+                <a href="#github">Repositorios</a>
+                <a href="#acerca">Sobre mí</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+    
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Hecho con Python y FastAPI. Ajusta este diseño y agrega tus proyectos cuando quieras.</p>
+        </div>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

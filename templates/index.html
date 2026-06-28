@@ -1,0 +1,608 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="hero-eyebrow">&lt;desarrollador_software · RPA · datos /&gt;</p>
+                <h1>Hola, soy <span class="highlight">Juan Pablo Salazar</span></h1>
+                <p class="hero-sub">
+                    Desarrollador de Software y RPA desde Bello, Antioquia.
+                    Automatizo procesos, construyo APIs con Python y analizo datos con Power BI.
+                    Actualmente cursando Ingeniería en Ciencias de Datos en el ITM.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#github">Ver repositorios</a>
+                    <a class="btn btn-ghost" href="https://github.com/JPS4L4" target="_blank">GitHub →</a>
+                </div>
+            </div>
+
+            <div class="hero-terminal">
+                <div class="terminal-bar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">juan@dev ~ $</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="t-prompt">$</span> python -c <span class="t-string">"import jps4l4"</span></p>
+                    <p class="t-output">Cargando perfil...</p>
+                    <p><span class="t-key">nombre</span>: <span class="t-val">"Juan Pablo Salazar Ceballos"</span></p>
+                    <p><span class="t-key">rol</span>: <span class="t-val">"Dev Software · RPA · Datos"</span></p>
+                    <p><span class="t-key">stack</span>: <span class="t-val">["Python", "FastAPI", "Power BI",
+                            "SQL"]</span></p>
+                    <p><span class="t-key">rpa</span>: <span class="t-val">["Power Automate", "Excel VBA"]</span></p>
+                    <p><span class="t-key">ciudad</span>: <span class="t-val">"Bello, Antioquia 🇨🇴"</span></p>
+                    <p><span class="t-key">idiomas</span>: <span class="t-val">["Español (nativo)", "Inglés B2"]</span>
+                    </p>
+                    <p><span class="t-key">estado</span>: <span class="t-val t-green">"disponible para oportunidades
+                            ✓"</span></p>
+                    <p class="t-cursor">█</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="exp-section" id="experiencia">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-label">// experiencia</span>
+            <h2>Dónde he trabajado</h2>
+        </div>
+        <div class="exp-card">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-title">Desarrollador RPA</h3>
+                    <p class="exp-company">Corbeta S.A. · Medellín, Antioquia</p>
+                </div>
+                <span class="exp-period">2023 – 2024</span>
+            </div>
+            <ul class="exp-list">
+                <li>Diseñé e implementé flujos de automatización con <strong>Power Automate</strong> y <strong>Microsoft
+                        Flow</strong>, eliminando tareas manuales repetitivas del área contable.</li>
+                <li>Desarrollé macros avanzadas en <strong>Excel VBA</strong> para limpieza y transformación masiva de
+                    datos.</li>
+                <li>Construí tableros de control interactivos en <strong>Power BI</strong> (DAX + modelado) para
+                    visualización de indicadores financieros en tiempo real.</li>
+                <li>Integré múltiples fuentes de datos heterogéneas garantizando fiabilidad y consistencia para
+                    gerencia.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- REPOS GITHUB EN VIVO -->
+<section class="github-section" id="github">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-label">// github · JPS4L4</span>
+            <h2>Repositorios públicos</h2>
+            <p>Traídos en tiempo real desde <a href="https://github.com/JPS4L4" target="_blank" class="inline-link">github.com/JPS4L4</a>.</p>
+            <button class="btn btn-primary" id="open-repo-browser" type="button">Explorar repositorios</button>
+        </div>
+        <div class="github-content">
+            <div class="github-grid" id="github-repos">
+                <div class="repo-loading"><span class="loader"></span> Conectando con GitHub...</div>
+            </div>
+            <aside class="repo-browser-modal hidden" id="repo-browser-modal" aria-live="polite" aria-modal="true" role="dialog">
+                <div class="repo-browser-dialog">
+                    <div class="repo-browser-header">
+                        <div>
+                            <span class="section-label">// explorador de repos</span>
+                            <h3>Repositorios de GitHub</h3>
+                        </div>
+                        <button class="btn btn-ghost repo-browser-close-btn" id="repo-browser-close-btn" type="button">✕</button>
+                    </div>
+                    <div class="repo-browser-controls">
+                        <span id="repo-browser-page-label">Página 1 de 1</span>
+                        <div class="repo-browser-pagination">
+                            <button class="btn btn-ghost" id="repo-browser-prev" type="button">Anterior</button>
+                            <button class="btn btn-ghost" id="repo-browser-next" type="button">Siguiente</button>
+                        </div>
+                    </div>
+                    <div class="repo-browser-body">
+                        <div class="repo-browser-list" id="repo-browser-list"></div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="repo-detail-overlay hidden" id="repo-detail-overlay" aria-live="polite" aria-modal="true" role="dialog">
+                <div class="repo-detail-dialog">
+                    <button class="btn btn-ghost repo-detail-close-btn" id="repo-detail-close-btn" type="button">✕</button>
+                    <span class="section-label">// detalle del repositorio</span>
+                    <h3 class="repo-detail-title" id="detail-name">Selecciona un repositorio</h3>
+                    <p class="repo-desc" id="detail-desc">Selecciona un repositorio de la lista para ver su información aquí.</p>
+                    <div class="repo-detail-meta">
+                        <div><strong>Lenguaje:</strong> <span id="detail-language">—</span></div>
+                        <div><strong>Estrellas:</strong> <span id="detail-stars">—</span></div>
+                        <div><strong>Forks:</strong> <span id="detail-forks">—</span></div>
+                        <div><strong>Actualizado:</strong> <span id="detail-updated">—</span></div>
+                        <div><strong>Visitas:</strong> <span id="detail-watchers">—</span></div>
+                    </div>
+                    <div class="repo-detail-links">
+                        <a id="detail-homepage" class="btn btn-primary hidden" href="#" target="_blank" rel="noopener noreferrer">Ver sitio del proyecto</a>
+                        <a id="detail-github" class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">Ver en GitHub</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about-section" id="acerca">
+    <div class="container about-grid">
+        <div class="about-text">
+            <span class="section-label">// sobre mí</span>
+            <h2>¿Quién soy?</h2>
+            <p>
+                Soy Juan Pablo Salazar Ceballos, Desarrollador de Software y RPA de Bello, Antioquia.
+                Tengo experiencia comprobada automatizando procesos empresariales en Corbeta S.A.
+                y actualmente curso Ingeniería en Ciencias de Datos en el ITM.
+            </p>
+            <p>
+                Me muevo entre el backend con Python y FastAPI, la automatización con Power Automate,
+                y el análisis de datos con Power BI y SQL. Mi meta es integrar esas tres áreas
+                en proyectos que resuelvan problemas reales.
+            </p>
+
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <p class="skill-group-title">Lenguajes</p>
+                    <div class="skill-tags">
+                        <span>Python</span><span>JavaScript</span><span>TypeScript</span><span>SQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <p class="skill-group-title">Automatización RPA</p>
+                    <div class="skill-tags">
+                        <span>Power Automate</span><span>Microsoft Flow</span><span>Excel VBA</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <p class="skill-group-title">Datos & BI</p>
+                    <div class="skill-tags">
+                        <span>Power BI</span><span>DAX</span><span>ETL</span><span>Análisis de datos</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <p class="skill-group-title">Backend & Tools</p>
+                    <div class="skill-tags">
+                        <span>FastAPI</span><span>Jinja2</span><span>Git</span><span>GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-right-container">
+            <div class="personal-photo">
+                <img src="/static/images/fotoPortafolio.jpeg" alt="juan_salazar_foto_perfil" />
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <span class="stat-num" id="repo-count">—</span>
+                    <span class="stat-label">repos en GitHub</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">1</span>
+                    <span class="stat-label">año de experiencia laboral</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">B2</span>
+                    <span class="stat-label">nivel de inglés</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">ITM</span>
+                    <span class="stat-label">Ing. Ciencias de Datos</span>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<!-- EDUCACIÓN -->
+<section class="edu-section" id="educacion">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-label">// educación</span>
+            <h2>Formación académica</h2>
+        </div>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <span class="edu-period">2024 – Presente</span>
+                <h3>Ingeniería en Ciencias de Datos</h3>
+                <p>Instituto Tecnológico Metropolitano (ITM) · Medellín</p>
+            </div>
+            <div class="edu-card">
+                <span class="edu-period">2022 – 2024</span>
+                <h3>Tecnología en Análisis y Desarrollo de Sistemas de Información</h3>
+                <p>SENA – CTMA</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact-section" id="contacto">
+    <div class="container">
+        <div class="contact-card">
+            <span class="section-label">// contacto</span>
+            <h2>¿Tienes un proyecto o una vacante?</h2>
+            <p>
+                Estoy disponible para oportunidades en desarrollo backend, automatización RPA
+                o análisis de datos. Si valoras el código honesto y las ganas de crecer, hablemos.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:devjuansalazar04@gmail.com" class="btn btn-primary">devjuansalazar04@gmail.com</a>
+                <a href="tel:+573002065618" class="btn btn-ghost">+57 300 206 5618</a>
+                <a href="https://github.com/JPS4L4" target="_blank" class="btn btn-ghost">GitHub →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const GITHUB_USER = "JPS4L4";
+    const mainNav = document.getElementById("main-nav");
+    const navToggle = document.getElementById("nav-toggle");
+    const header = document.querySelector(".site-header");
+    const desktopQuery = window.matchMedia("(min-width: 980px)");
+
+    const repoSummaryContainer = document.getElementById("github-repos");
+    const repoBrowserButton = document.getElementById("open-repo-browser");
+    const repoBrowserModal = document.getElementById("repo-browser-modal");
+    const repoBrowserCloseBtn = document.getElementById("repo-browser-close-btn");
+    const repoBrowserPrev = document.getElementById("repo-browser-prev");
+    const repoBrowserNext = document.getElementById("repo-browser-next");
+    const repoBrowserPageLabel = document.getElementById("repo-browser-page-label");
+    const repoBrowserList = document.getElementById("repo-browser-list");
+
+    const repoDetailOverlay = document.getElementById("repo-detail-overlay");
+    const repoDetailCloseBtn = document.getElementById("repo-detail-close-btn");
+    const detailName = document.getElementById("detail-name");
+    const detailDesc = document.getElementById("detail-desc");
+    const detailLanguage = document.getElementById("detail-language");
+    const detailStars = document.getElementById("detail-stars");
+    const detailForks = document.getElementById("detail-forks");
+    const detailUpdated = document.getElementById("detail-updated");
+    const detailWatchers = document.getElementById("detail-watchers");
+    const detailHomepage = document.getElementById("detail-homepage");
+    const detailGithub = document.getElementById("detail-github");
+
+    let githubRepos = [];
+    let currentRepoPage = 1;
+    const reposPerPage = 5;
+
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString("es-CO", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
+    }
+
+    function timeAgo(dateStr) {
+        const diff = Date.now() - new Date(dateStr).getTime();
+        const days = Math.floor(diff / 86400000);
+        if (days === 0) return "hoy";
+        if (days === 1) return "ayer";
+        if (days < 30) return `hace ${days} días`;
+        const months = Math.floor(days / 30);
+        return `hace ${months} mes${months > 1 ? "es" : ""}`;
+    }
+
+    function closeMobileNav() {
+        if (!mainNav || !navToggle) return;
+        mainNav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.textContent = "☰";
+    }
+
+    function toggleMobileNav() {
+        if (!mainNav || !navToggle) return;
+        const isOpen = mainNav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", isOpen.toString());
+        navToggle.textContent = isOpen ? "✕" : "☰";
+    }
+
+    function updateNavMode(isHeaderVisible = true) {
+        if (!mainNav) return;
+
+        if (!desktopQuery.matches) {
+            mainNav.classList.remove("open");
+        }
+    }
+
+    function createRepoCard(repo, cardClass) {
+        return `
+            <article class="repo-card ${cardClass}" data-repo-id="${repo.id}" role="button" tabindex="0">
+              <div class="repo-top">
+                <span class="repo-icon">⬡</span>
+                <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
+              </div>
+              <p class="repo-desc">${repo.description || "Sin descripción aún."}</p>
+              <div class="repo-meta">
+                ${repo.language ? `<span class="repo-lang"><span class="lang-dot"></span>${repo.language}</span>` : ""}
+                <span class="repo-stars">★ ${repo.stargazers_count}</span>
+                <span class="repo-updated">↻ ${timeAgo(repo.updated_at)}</span>
+              </div>
+            </article>
+        `;
+    }
+
+    function bindRepoDetailTriggers(root, selector) {
+        if (!root) return;
+        root.querySelectorAll(selector).forEach(card => {
+            card.addEventListener("click", (event) => {
+                if (event.target.closest("a")) return;
+                const repoId = card.dataset.repoId;
+                openRepoDetailOverlay(repoId);
+            });
+            card.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    const repoId = card.dataset.repoId;
+                    openRepoDetailOverlay(repoId);
+                }
+            });
+        });
+    }
+
+    function openRepoDetailOverlay(repoId) {
+        const repo = typeof repoId === "object"
+            ? repoId
+            : githubRepos.find(item => String(item.id) === String(repoId));
+        if (!repo || !repoDetailOverlay) return;
+
+        detailName.textContent = repo.name;
+        detailDesc.textContent = repo.description || "Sin descripción aún.";
+        detailLanguage.textContent = repo.language || "No especificado";
+        detailStars.textContent = repo.stargazers_count;
+        detailForks.textContent = repo.forks_count;
+        detailUpdated.textContent = formatDate(repo.updated_at);
+        detailWatchers.textContent = repo.watchers_count;
+        detailGithub.href = repo.html_url;
+
+        if (repo.homepage) {
+            detailHomepage.href = repo.homepage;
+            detailHomepage.classList.remove("hidden");
+        } else {
+            detailHomepage.classList.add("hidden");
+        }
+
+        repoDetailOverlay.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        history.pushState({ repoId: repo.id, detail: true }, "", `#repo-${encodeURIComponent(repo.name.replace(/\s+/g, "-"))}`);
+    }
+
+    function closeRepoDetailOverlay(updateHistory = true) {
+        if (!repoDetailOverlay) return;
+        repoDetailOverlay.classList.add("hidden");
+        document.body.style.overflow = "";
+        if (updateHistory) {
+            history.pushState(null, "", "#github");
+        }
+    }
+
+    function renderRepoSummary(repos) {
+        if (!repoSummaryContainer) return;
+
+        if (!repos.length) {
+            repoSummaryContainer.innerHTML = `<p class="empty-state">Aún no hay repositorios públicos.</p>`;
+            return;
+        }
+
+        const summaryRepos = repos.slice(0, 6);
+        repoSummaryContainer.innerHTML = summaryRepos.map(repo => createRepoCard(repo, "repo-summary-detail-trigger")).join("");
+        bindRepoDetailTriggers(repoSummaryContainer, ".repo-summary-detail-trigger");
+    }
+
+    function getTotalPages() {
+        return Math.max(1, Math.ceil(githubRepos.length / reposPerPage));
+    }
+
+    function updateRepoBrowserControls() {
+        if (!repoBrowserPageLabel || !repoBrowserPrev || !repoBrowserNext) return;
+        const totalPages = getTotalPages();
+        currentRepoPage = Math.min(Math.max(1, currentRepoPage), totalPages);
+        repoBrowserPageLabel.textContent = `Página ${currentRepoPage} de ${totalPages}`;
+        repoBrowserPrev.disabled = currentRepoPage <= 1;
+        repoBrowserNext.disabled = currentRepoPage >= totalPages;
+    }
+
+    function renderRepoBrowserPage(page = 1) {
+        if (!repoBrowserList) return;
+
+        currentRepoPage = Math.min(Math.max(1, page), getTotalPages());
+        const start = (currentRepoPage - 1) * reposPerPage;
+        const pageRepos = githubRepos.slice(start, start + reposPerPage);
+
+        if (!pageRepos.length) {
+            repoBrowserList.innerHTML = `<p class="empty-state">No hay repositorios para esta página.</p>`;
+            updateRepoBrowserControls();
+            return;
+        }
+
+        repoBrowserList.innerHTML = pageRepos.map(repo => createRepoCard(repo, "repo-browser-detail-trigger")).join("");
+        bindRepoDetailTriggers(repoBrowserList, ".repo-browser-detail-trigger");
+        updateRepoBrowserControls();
+    }
+
+    function openRepoBrowser() {
+        if (!repoBrowserModal) return;
+        repoBrowserModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        renderRepoBrowserPage(currentRepoPage);
+    }
+
+    function closeRepoBrowser() {
+        if (!repoBrowserModal) return;
+        repoBrowserModal.classList.add("hidden");
+        document.body.style.overflow = "";
+        history.pushState(null, "", "#github");
+    }
+
+    function handleInitialHash() {
+        const hash = window.location.hash;
+        if (!hash.startsWith("#repo-")) return;
+        const slug = decodeURIComponent(hash.slice(6));
+        const repo = githubRepos.find(item => item.name.replace(/\s+/g, "-").toLowerCase() === slug.toLowerCase());
+        if (repo) {
+            openRepoDetailOverlay(repo);
+        }
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener("click", toggleMobileNav);
+    }
+
+    document.querySelectorAll(".header-nav a").forEach(link => {
+        link.addEventListener("click", () => {
+            if (!desktopQuery.matches) {
+                closeMobileNav();
+            }
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!desktopQuery.matches && mainNav && navToggle) {
+            if (!mainNav.contains(event.target) && !navToggle.contains(event.target)) {
+                closeMobileNav();
+            }
+        }
+    });
+
+    if (header && mainNav) {
+        const headerObserver = new IntersectionObserver(
+            ([entry]) => updateNavMode(entry.isIntersecting),
+            { threshold: 0.05 }
+        );
+        headerObserver.observe(header);
+    }
+
+    window.addEventListener("resize", () => {
+        const headerVisible = header ? header.getBoundingClientRect().bottom > 0 : true;
+        updateNavMode(headerVisible);
+    });
+
+    if (repoBrowserButton) {
+        repoBrowserButton.addEventListener("click", openRepoBrowser);
+    }
+
+    if (repoBrowserCloseBtn) {
+        repoBrowserCloseBtn.addEventListener("click", closeRepoBrowser);
+    }
+
+    if (repoBrowserModal) {
+        repoBrowserModal.addEventListener("click", (event) => {
+            if (event.target === repoBrowserModal) {
+                closeRepoBrowser();
+            }
+        });
+    }
+
+    if (repoBrowserPrev) {
+        repoBrowserPrev.addEventListener("click", () => renderRepoBrowserPage(currentRepoPage - 1));
+    }
+
+    if (repoBrowserNext) {
+        repoBrowserNext.addEventListener("click", () => renderRepoBrowserPage(currentRepoPage + 1));
+    }
+
+    if (repoDetailCloseBtn) {
+        repoDetailCloseBtn.addEventListener("click", () => closeRepoDetailOverlay());
+    }
+
+    if (repoDetailOverlay) {
+        repoDetailOverlay.addEventListener("click", (event) => {
+            if (event.target === repoDetailOverlay) {
+                closeRepoDetailOverlay();
+            }
+        });
+    }
+
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            if (repoDetailOverlay && !repoDetailOverlay.classList.contains("hidden")) {
+                closeRepoDetailOverlay();
+            } else if (repoBrowserModal && !repoBrowserModal.classList.contains("hidden")) {
+                closeRepoBrowser();
+            }
+        }
+    });
+
+    window.addEventListener("popstate", (event) => {
+        if (event.state && event.state.repoId) {
+            openRepoDetailOverlay(event.state.repoId);
+        } else {
+            closeRepoDetailOverlay(false);
+            closeRepoBrowser();
+        }
+    });
+
+    function loadGithubRepos() {
+        const container = document.getElementById("github-repos");
+        const repoCount = document.getElementById("repo-count");
+
+        fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=100&type=public`)
+            .then(res => {
+                if (!res.ok) throw new Error();
+                return res.json();
+            })
+            .then(repos => {
+                githubRepos = repos;
+                renderRepoSummary(githubRepos);
+                renderRepoBrowserPage(currentRepoPage);
+                return fetch(`https://api.github.com/users/${GITHUB_USER}`);
+            })
+            .then(userRes => {
+                if (userRes && userRes.ok) {
+                    return userRes.json();
+                }
+            })
+            .then(user => {
+                if (repoCount) {
+                    repoCount.textContent = user && user.public_repos != null ? user.public_repos : githubRepos.length;
+                }
+                handleInitialHash();
+            })
+            .catch(() => {
+                if (container) {
+                    container.innerHTML = `
+                        <div class="repo-error">
+                          <p>No se pudieron cargar los repositorios.</p>
+                          <a href="https://github.com/${GITHUB_USER}" target="_blank" class="btn btn-ghost">Ver en GitHub →</a>
+                        </div>`;
+                }
+            });
+    }
+
+    loadGithubRepos();
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(
+        ".project-card, .repo-card, .stat-card, .exp-card, .edu-card, .about-text, .about-stats"
+    ).forEach(el => observer.observe(el));
+
+    const cursor = document.querySelector(".t-cursor");
+    if (cursor) setInterval(() => cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0", 530);
+</script>
+{% endblock %}
+
