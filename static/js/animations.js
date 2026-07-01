@@ -1,7 +1,8 @@
 const reduceMotionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
 const prefersReducedMotion = reduceMotionQuery ? reduceMotionQuery.matches : false;
+const isLowPowerDevice = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
 
-if (prefersReducedMotion) {
+if (prefersReducedMotion || isLowPowerDevice) {
   document.documentElement.classList.add('reduced-motion');
 }
 
@@ -12,7 +13,7 @@ const navLinks = Array.from(document.querySelectorAll('.header-nav a'));
 const heroAmbients = Array.from(document.querySelectorAll('[data-parallax]'));
 const revealElements = Array.from(document.querySelectorAll('[data-reveal]'));
 const supportsIntersectionObserver = typeof window.IntersectionObserver === 'function';
-const supportsMutationObserver = typeof window.MutationObserver === 'function';
+let ticking = false;
 
 function revealElement(element) {
   if (!element || element.classList.contains('is-visible')) return;
@@ -78,41 +79,23 @@ function observeReveals() {
   });
 }
 
-if (revealElements.length) {
-  observeReveals();
-
-  if (supportsMutationObserver) {
-    const mutationObserver = new MutationObserver(() => {
-      const allReveals = Array.from(document.querySelectorAll('[data-reveal]'));
-      allReveals.forEach((element) => {
-        if (!element.classList.contains('is-visible') && !element.dataset.revealObserved) {
-          element.dataset.revealObserved = 'true';
-          if (!supportsIntersectionObserver) {
-            revealElement(element);
-            return;
-          }
-
-          const observer = new IntersectionObserver((entries, currentObserver) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              revealElement(entry.target);
-              currentObserver.unobserve(entry.target);
-            });
-          }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-          observer.observe(element);
-        }
-      });
-    });
-
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-  }
+function scheduleViewportWork() {
+  if (ticking) return;
+  ticking = true;
+  window.requestAnimationFrame(() => {
+    updateHeaderState();
+    updateActiveNav();
+    updateParallax();
+    ticking = false;
+  });
 }
 
-window.addEventListener('scroll', () => {
-  updateHeaderState();
-  updateActiveNav();
-  updateParallax();
-}, { passive: true });
+if (revealElements.length) {
+  observeReveals();
+}
+
+window.addEventListener('scroll', scheduleViewportWork, { passive: true });
+window.addEventListener('resize', scheduleViewportWork, { passive: true });
 
 window.addEventListener('load', () => {
   const loader = document.getElementById('page-loader');
@@ -133,14 +116,14 @@ window.addEventListener('load', () => {
       window.setTimeout(() => {
         line.classList.remove('terminal-line--loading');
         line.classList.add('terminal-line--ready');
-      }, 220 + index * 180);
+      }, prefersReducedMotion ? 0 : 220 + index * 120);
     });
 
     window.setTimeout(() => {
       loadingText.textContent = 'Perfil cargado ✓';
       loadingText.classList.add('t-green');
       profilePreview.classList.remove('hidden');
-    }, 2200);
+    }, prefersReducedMotion ? 350 : 1800);
   }
 });
 
