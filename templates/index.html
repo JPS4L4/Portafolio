@@ -3,10 +3,10 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="hero" id="inicio">
+<section class="hero" id="inicio" data-reveal>
     <div class="container">
         <div class="hero-inner">
-            <div class="hero-text">
+            <div class="hero-text" data-reveal data-reveal-delay="80">
                 <p class="hero-eyebrow">&lt;desarrollador_software · RPA · datos /&gt;</p>
                 <h1>Hola, soy <span class="highlight">Juan Pablo Salazar</span></h1>
                 <p class="hero-sub">
@@ -17,10 +17,11 @@
                 <div class="hero-actions">
                     <a class="btn btn-primary" href="#github">Ver repositorios</a>
                     <a class="btn btn-ghost" href="https://github.com/JPS4L4" target="_blank">GitHub →</a>
+                    <a class="btn btn-ghost" href="https://linkedin.com/in/juanpablosalazar" target="_blank">LinkedIn →</a>
                 </div>
             </div>
 
-            <div class="hero-terminal">
+            <div class="hero-terminal" data-parallax="0.04" data-reveal-delay="140">
                 <div class="terminal-bar">
                     <span class="dot red"></span>
                     <span class="dot yellow"></span>
@@ -28,19 +29,29 @@
                     <span class="terminal-title">juan@dev ~ $</span>
                 </div>
                 <div class="terminal-body">
-                    <p><span class="t-prompt">$</span> python -c <span class="t-string">"import jps4l4"</span></p>
-                    <p class="t-output">Cargando perfil...</p>
-                    <p><span class="t-key">nombre</span>: <span class="t-val">"Juan Pablo Salazar Ceballos"</span></p>
-                    <p><span class="t-key">rol</span>: <span class="t-val">"Dev Software · RPA · Datos"</span></p>
-                    <p><span class="t-key">stack</span>: <span class="t-val">["Python", "FastAPI", "Power BI",
-                            "SQL"]</span></p>
-                    <p><span class="t-key">rpa</span>: <span class="t-val">["Power Automate", "Excel VBA"]</span></p>
-                    <p><span class="t-key">ciudad</span>: <span class="t-val">"Bello, Antioquia 🇨🇴"</span></p>
-                    <p><span class="t-key">idiomas</span>: <span class="t-val">["Español (nativo)", "Inglés B2"]</span>
-                    </p>
-                    <p><span class="t-key">estado</span>: <span class="t-val t-green">"disponible para oportunidades
-                            ✓"</span></p>
-                    <p class="t-cursor">█</p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-prompt">$</span> python -c <span class="t-string">"import
+                            jps4l4"</span></p>
+                    <p class="terminal-line--loading t-output" id="terminal-loading">Cargando perfil...</p>
+                    <div class="github-profile-preview hidden" id="github-profile-preview">
+                        <img src="https://avatars.githubusercontent.com/u/125702841?v=4"
+                            alt="Foto de perfil de GitHub de Juan Pablo Salazar" />
+                        <span>JPS4L4</span>
+                    </div>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">nombre</span>: <span class="t-val">"Juan Pablo
+                            Salazar Ceballos"</span></p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">rol</span>: <span class="t-val">"Dev Software · RPA
+                            · Datos"</span></p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">stack</span>: <span class="t-val">["Python",
+                            "FastAPI", "Power BI", "SQL"]</span></p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">rpa</span>: <span class="t-val">["Power Automate",
+                            "Excel VBA"]</span></p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">ciudad</span>: <span class="t-val">"Bello, Antioquia
+                            🇨🇴"</span></p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">idiomas</span>: <span class="t-val">["Español
+                            (nativo)", "Inglés B2"]</span></p>
+                    <p class="terminal-line terminal-line--loading"><span class="t-key">estado</span>: <span
+                            class="t-val t-green">"disponible para oportunidades ✓"</span></p>
+                    <p class="terminal-line terminal-line--loading t-cursor">█</p>
                 </div>
             </div>
         </div>
@@ -48,13 +59,13 @@
 </section>
 
 <!-- EXPERIENCIA -->
-<section class="exp-section" id="experiencia">
+<section class="exp-section" id="experiencia" data-reveal>
     <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal data-reveal-delay="70">
             <span class="section-label">// experiencia</span>
             <h2>Dónde he trabajado</h2>
         </div>
-        <div class="exp-card">
+        <div class="exp-card" data-reveal data-reveal-delay="120">
             <div class="exp-header">
                 <div>
                     <h3 class="exp-title">Desarrollador RPA</h3>
@@ -77,9 +88,9 @@
 </section>
 
 <!-- REPOS GITHUB EN VIVO -->
-<section class="github-section" id="github">
+<section class="github-section" id="github" data-reveal>
     <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal data-reveal-delay="80">
             <span class="section-label">// github · JPS4L4</span>
             <h2>Repositorios públicos</h2>
             <p>Traídos en tiempo real desde <a href="https://github.com/JPS4L4" target="_blank" class="inline-link">github.com/JPS4L4</a>.</p>
@@ -134,9 +145,9 @@
 </section>
 
 <!-- SOBRE MÍ -->
-<section class="about-section" id="acerca">
+<section class="about-section" id="acerca" data-reveal>
     <div class="container about-grid">
-        <div class="about-text">
+        <div class="about-text" data-reveal data-reveal-delay="70">
             <span class="section-label">// sobre mí</span>
             <h2>¿Quién soy?</h2>
             <p>
@@ -178,7 +189,7 @@
             </div>
         </div>
         
-        <div class="about-right-container">
+        <div class="about-right-container" data-reveal data-reveal-delay="120">
             <div class="personal-photo">
                 <img src="/static/images/fotoPortafolio.jpeg" alt="juan_salazar_foto_perfil" />
             </div>
@@ -206,9 +217,9 @@
 </section>
 
 <!-- EDUCACIÓN -->
-<section class="edu-section" id="educacion">
+<section class="edu-section" id="educacion" data-reveal>
     <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal data-reveal-delay="70">
             <span class="section-label">// educación</span>
             <h2>Formación académica</h2>
         </div>
@@ -228,9 +239,9 @@
 </section>
 
 <!-- CONTACTO -->
-<section class="contact-section" id="contacto">
+<section class="contact-section" id="contacto" data-reveal>
     <div class="container">
-        <div class="contact-card">
+        <div class="contact-card" data-reveal data-reveal-delay="110">
             <span class="section-label">// contacto</span>
             <h2>¿Tienes un proyecto o una vacante?</h2>
             <p>
@@ -241,6 +252,8 @@
                 <a href="mailto:devjuansalazar04@gmail.com" class="btn btn-primary">devjuansalazar04@gmail.com</a>
                 <a href="tel:+573002065618" class="btn btn-ghost">+57 300 206 5618</a>
                 <a href="https://github.com/JPS4L4" target="_blank" class="btn btn-ghost">GitHub →</a>
+                <a href="https://www.linkedin.com/in/juan-pablo-salazar-ceballos-620140252/?skipRedirect=true" target="_blank"
+                    class="btn btn-ghost">LinkedIn →</a>
             </div>
         </div>
     </div>
@@ -324,7 +337,7 @@
 
     function createRepoCard(repo, cardClass) {
         return `
-            <article class="repo-card ${cardClass}" data-repo-id="${repo.id}" role="button" tabindex="0">
+            <article class="repo-card ${cardClass}" data-repo-id="${repo.id}" data-reveal role="button" tabindex="0">
               <div class="repo-top">
                 <span class="repo-icon">⬡</span>
                 <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
@@ -587,19 +600,6 @@
     }
 
     loadGithubRepos();
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add("visible");
-                observer.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll(
-        ".project-card, .repo-card, .stat-card, .exp-card, .edu-card, .about-text, .about-stats"
-    ).forEach(el => observer.observe(el));
 
     const cursor = document.querySelector(".t-cursor");
     if (cursor) setInterval(() => cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0", 530);

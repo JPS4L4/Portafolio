@@ -30,6 +30,14 @@
 <link rel="stylesheet" href="/static/css/styles.css" />
 </head>
 <body>
+    <div class="page-loader" id="page-loader" aria-hidden="true">
+        <div class="loader-ring" aria-label="Cargando portafolio">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <header class="site-header" id="site-header">
         <div class="container header-inner">
             
@@ -60,10 +68,11 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>Hecho con Python y FastAPI, <span class="highlight">Gracias por visitar mi portafolio.</span></p>
+            <p><span class="highlight">Gracias por visitar mi portafolio.</span></p>
         </div>
     </footer>
 
+    <script src="/static/js/animations.js"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

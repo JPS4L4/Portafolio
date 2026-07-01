@@ -35,6 +35,50 @@ body::selection {
     color: #fff;
 }
 
+.page-loader {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(7, 9, 17, 0.97);
+    z-index: 3000;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.page-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-ring {
+    position: relative;
+    width: 4.2rem;
+    height: 4.2rem;
+}
+
+.loader-ring span {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--primary);
+    border-right-color: rgba(88, 196, 255, 0.85);
+    animation: spin 0.9s linear infinite;
+}
+
+.loader-ring span:nth-child(2) {
+    inset: 0.6rem;
+    border-top-color: transparent;
+    border-left-color: rgba(255, 255, 255, 0.7);
+    animation-direction: reverse;
+}
+
+.loader-ring span:nth-child(3) {
+    inset: 1.2rem;
+    border-top-color: var(--primary-soft);
+    animation-duration: 1.2s;
+}
 img {
     max-width: 100%;
     display: block;
@@ -53,17 +97,57 @@ select {
     font: 500 16px/1.7 Inter, system-ui, sans-serif;
 }
 
+main {
+    position: relative;
+    z-index: 1;
+}
+
+section[id] {
+    scroll-margin-top: 7rem;
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0) scale(0.98);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+[data-parallax] {
+    transform: translate3d(0, var(--parallax-offset, 0px), 0);
+    will-change: transform;
+}
+
+.reduced-motion [data-reveal],
+.reduced-motion [data-parallax],
+.reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
 /* ── Header fijo en pantallas grandes ── */
 .site-header {
     position: fixed;
-    /* El HEADER es el que se queda fijo, no el nav */
     top: 0;
     left: 0;
     right: 0;
     z-index: 999;
-    background: rgba(10, 10, 20, 0.85);
+    background: rgba(10, 10, 20, 0.75);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    
+    .site-header.scrolled {
+        background: rgba(8, 10, 19, 0.95);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+        border-color: rgba(255, 255, 255, 0.12);
 }
 
 .header-inner {
@@ -93,9 +177,12 @@ select {
     transition: background 0.25s ease, transform 0.25s ease;
 }
 
-.nav-links a:hover {
-    background: rgba(255, 255, 255, 0.08);
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(124, 104, 255, 0.16);
+    color: #fff;
     transform: translateY(-1px);
+    box-shadow: inset 0 0 0 1px rgba(124, 104, 255, 0.18);
 }
 
 /* ── Botón toggle: oculto en desktop ── */
@@ -265,13 +352,14 @@ h3 {
 }
 
 .hero-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) 0.9fr;
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
     gap: 2rem;
-    align-items: start;
 }
 
 .hero-text {
+    align-self: center;
     max-width: 680px;
 }
 
@@ -308,8 +396,10 @@ h3 {
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.btn:hover {
-    transform: translateY(-1px);
+.btn:hover,
+.btn:focus-visible {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
@@ -325,11 +415,13 @@ h3 {
 }
 
 .hero-terminal {
+    margin-top: 3.5rem;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px;
     box-shadow: var(--shadow);
     overflow: hidden;
+    align-self: center;
 }
 
 .terminal-bar {
@@ -386,13 +478,77 @@ h3 {
     color: var(--muted);
 }
 
+.terminal-line {
+    margin: 0;
+    min-height: 1.6em;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.terminal-line--ready {
+    opacity: 1;
+    transform: translateY(0);
+    color: inherit;
+}
+
+.terminal-line--loading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: transparent;
+    pointer-events: none;
+}
+
+.terminal-line--loading::before {
+    content: "";
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--primary);
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+}
+
+.terminal-line--loading>* {
+    opacity: 0;
+}
 .t-cursor {
     display: inline-block;
     margin-top: 0.5rem;
     color: var(--text);
     opacity: 1;
+    animation: blink 1s step-end infinite;
+    }
+    
+    .github-profile-preview {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+    }
+    
+    .github-profile-preview img {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        border: 2px solid rgba(124, 104, 255, 0.45);
 }
 
+.hidden {
+    display: none;
+}
 .section-heading {
     margin-bottom: 2rem;
 }
@@ -436,6 +592,18 @@ h3 {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 28px;
     box-shadow: 0 18px 55px rgba(0, 0, 0, 0.16);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    
+    .exp-card:hover,
+    .edu-card:hover,
+    .stat-card:hover,
+    .project-card:hover,
+    .repo-card:hover,
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+        border-color: rgba(124, 104, 255, 0.28);
 }
 
 .exp-card,
@@ -859,6 +1027,11 @@ h3 {
     to { transform: rotate(360deg); }
 }
 
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 .about-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
