@@ -27,9 +27,12 @@
 <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg" />
 <link rel="icon" type="image/png" href="/static/images/favicon.png" />
 
-<link rel="stylesheet" href="/static/css/styles.css" />
+<!-- ── Estilos CSS ──  -->
+<link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
+
 </head>
 <body>
+
     <div class="page-loader" id="page-loader" aria-hidden="true">
         <div class="loader-ring" aria-label="Cargando portafolio">
             <span></span>
@@ -72,7 +75,8 @@
         </div>
     </footer>
 
+    {% block scripts %}
     <script src="/static/js/animations.js"></script>
-    {% block scripts %}{% endblock %}
+    {% endblock %}
 </body>
 </html>

@@ -32,7 +32,7 @@
                     <p class="terminal-line terminal-line--loading"><span class="t-prompt">$</span> python -c <span class="t-string">"import
                             jps4l4"</span></p>
                     <p class="terminal-line--loading t-output" id="terminal-loading">Cargando perfil...</p>
-                    <div class="github-profile-preview hidden" id="github-profile-preview">
+                    <div class="terminal-line terminal-line--loading github-profile-preview hidden" id="github-profile-preview">
                         <img src="https://avatars.githubusercontent.com/u/125702841?v=4"
                             alt="Foto de perfil de GitHub de Juan Pablo Salazar" />
                         <span>JPS4L4</span>
@@ -262,11 +262,12 @@
 {% endblock %}
 
 {% block scripts %}
+{{ super() }}
 <script>
     const GITHUB_USER = "JPS4L4";
     const mainNav = document.getElementById("main-nav");
     const navToggle = document.getElementById("nav-toggle");
-    const header = document.querySelector(".site-header");
+                const pageHeader = document.querySelector(".site-header");
     const desktopQuery = window.matchMedia("(min-width: 980px)");
 
     const repoSummaryContainer = document.getElementById("github-repos");
@@ -337,7 +338,7 @@
 
     function createRepoCard(repo, cardClass) {
         return `
-            <article class="repo-card ${cardClass}" data-repo-id="${repo.id}" data-reveal role="button" tabindex="0">
+            <article class="repo-card ${cardClass}" data-repo-id="${repo.id}" role="button" tabindex="0">
               <div class="repo-top">
                 <span class="repo-icon">⬡</span>
                 <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
@@ -494,16 +495,16 @@
         }
     });
 
-    if (header && mainNav) {
+                if (pageHeader && mainNav) {
         const headerObserver = new IntersectionObserver(
             ([entry]) => updateNavMode(entry.isIntersecting),
             { threshold: 0.05 }
         );
-        headerObserver.observe(header);
+                headerObserver.observe(pageHeader);
     }
 
     window.addEventListener("resize", () => {
-        const headerVisible = header ? header.getBoundingClientRect().bottom > 0 : true;
+        const headerVisible = pageHeader ? pageHeader.getBoundingClientRect().bottom > 0 : true;
         updateNavMode(headerVisible);
     });
 

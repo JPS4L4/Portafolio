@@ -8,11 +8,12 @@ if (prefersReducedMotion || isLowPowerDevice) {
 
 document.documentElement.classList.add('js-ready');
 
-const header = document.querySelector('.site-header');
+const siteHeader = document.querySelector('.site-header');
 const navLinks = Array.from(document.querySelectorAll('.header-nav a'));
 const heroAmbients = Array.from(document.querySelectorAll('[data-parallax]'));
 const revealElements = Array.from(document.querySelectorAll('[data-reveal]'));
 const supportsIntersectionObserver = typeof window.IntersectionObserver === 'function';
+let revealObserver = null;
 let ticking = false;
 
 function revealElement(element) {
@@ -23,10 +24,27 @@ function revealElement(element) {
   element.classList.add('is-visible');
 }
 
+function observeNewRevealElements(root = document) {
+  const newRevealTargets = Array.from(root.querySelectorAll('[data-reveal]')).filter(
+    (element) => !element.classList.contains('is-visible')
+  );
+
+  if (!newRevealTargets.length) return;
+
+  if (!supportsIntersectionObserver) {
+    newRevealTargets.forEach((element) => revealElement(element));
+    return;
+  }
+
+  if (!revealObserver) return;
+
+  newRevealTargets.forEach((element) => revealObserver.observe(element));
+}
+
 function updateHeaderState() {
-  if (!header) return;
+  if (!siteHeader) return;
   const scrolled = window.scrollY > 24;
-  header.classList.toggle('scrolled', scrolled);
+  siteHeader.classList.toggle('scrolled', scrolled);
 }
 
 function updateActiveNav() {
@@ -62,7 +80,7 @@ function observeReveals() {
     return;
   }
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
+  revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       revealElement(entry.target);
