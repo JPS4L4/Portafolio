@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "id": "tienda-fitness",
+      "name": "Tienda Fitness",
+      "description": "E-commerce fullstack con carrito, pagos con Stripe y MercadoPago y planes de nutrición/entrenamiento.",
+      "url": "https://tienda-fitness-pasarela-de-pagos-ca.vercel.app/",
+      "repo": "https://github.com/JPS4L4/Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
+      "image": "static/images/projects/fotoTiendaFitness.jpeg",
+      "tags": ["Next.js", "Prisma", "PostgreSQL", "Stripe"],
+      "featured": true
+    }
+  ]
+}

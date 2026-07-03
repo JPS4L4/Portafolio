@@ -9,6 +9,11 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI(title="Mi Portafolio")
@@ -27,9 +32,10 @@ async def read_index(request: FastAPIRequest):
 @app.get("/api/github/data")
 async def github_portfolio_data():
     headers = {
-        "Accept": "application/vnd.github+json",
-        "User-Agent": "portfolio-app/1.0",
-    }
+    "Accept": "application/vnd.github+json",
+    "User-Agent": "portfolio-app/1.0",
+    "Authorization": f"Bearer {os.environ.get('GITHUB_TOKEN')}",
+}
 
     def fetch_json(url: str):
         req = UrlRequest(url, headers=headers)
