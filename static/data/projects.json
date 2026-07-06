@@ -9,6 +9,16 @@
       "image": "static/images/projects/fotoTiendaFitness.jpeg",
       "tags": ["Next.js", "Prisma", "PostgreSQL", "Stripe"],
       "featured": true
+    },
+    {
+      "id": "gestion-inventario",
+      "name": "Sistema gestión de inventario",
+      "description": "Sistema de gestión de inventario funcional para una tienda física.",
+      "url": "https://sistema-de-gesti-n-de-inventarios-b-bice.vercel.app/",
+      "repo": "https://github.com/JPS4L4/Sistema-de-gesti-n-de-inventarios-b-sico",
+      "image": "static/images/projects/fotoGestionInventario.jpeg",
+      "tags": ["HTML", "CSS", "TypeScript", "Vite"],
+      "featured": false
     }
   ]
 }
