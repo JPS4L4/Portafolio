@@ -1,0 +1,17 @@
+{
+    "jobs":[
+    {
+        "charge": "Desarrollador de Soluciones de Software",
+        "company": "Corbeta S.A",
+        "location": " Medellín Antioquia",
+        "period": "2023 - 2024",
+        "achievements":[
+            "Desarrollé soluciones de software para automatizar procesos contables con Python y Power Automate, reduciendo tiempos operativos significativamente.",
+            "Construí dashboards interactivos en Power BI con DAX y modelado de datos para visualización de KPIs financieros en tiempo real.",
+            "Diseñé pipelines ETL integrando múltiples fuentes de datos heterogéneas, garantizando calidad y consistencia de la información.",
+            "Desarrollé scripts avanzados en Excel VBA para limpieza y transformación masiva de datos, eliminando procesos manuales repetitivos.",
+            "Documenté procesos técnicos y comuniqué resultados a stakeholders no técnicos de forma clara y efectiva."
+        ]
+    }   
+    ]
+}
