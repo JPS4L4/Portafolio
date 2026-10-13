@@ -1,7 +1,7 @@
 const GITHUB_USER = "JPS4L4";
     const mainNav = document.getElementById("main-nav");
     const navToggle = document.getElementById("nav-toggle");
-                const pageHeader = document.querySelector(".site-header");
+    const pageHeader = document.querySelector(".site-header");
     const desktopQuery = window.matchMedia("(min-width: 980px)");
 
     const repoSummaryContainer = document.getElementById("github-repos");
@@ -52,14 +52,14 @@ const GITHUB_USER = "JPS4L4";
         if (!mainNav || !navToggle) return;
         mainNav.classList.remove("open");
         navToggle.setAttribute("aria-expanded", "false");
-        navToggle.textContent = "☰";
+        navToggle.setAttribute("aria-label", "Abrir menú");
     }
 
     function toggleMobileNav() {
         if (!mainNav || !navToggle) return;
         const isOpen = mainNav.classList.toggle("open");
         navToggle.setAttribute("aria-expanded", isOpen.toString());
-        navToggle.textContent = isOpen ? "✕" : "☰";
+        navToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
     }
 
     function updateNavMode(isHeaderVisible = true) {
@@ -70,30 +70,11 @@ const GITHUB_USER = "JPS4L4";
         }
     }
 
-    function escapeHtml(value) {
-        return String(value ?? "").replace(/[&<>"']/g, ch => ({
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#39;"
-        }[ch]));
-    }
-
-    function safeUrl(value) {
-        try {
-            const url = new URL(String(value ?? ""));
-            return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
-        } catch {
-            return "";
-        }
-    }
-
     function createRepoCard(repo, cardClass) {
         return `
             <article class="repo-card ${cardClass}" data-repo-id="${escapeHtml(repo.id)}" role="button" tabindex="0">
               <div class="repo-top">
-                <span class="repo-icon">⬡</span>
+                <span class="repo-icon" aria-hidden="true">⬡</span>
                 <a href="${escapeHtml(safeUrl(repo.html_url))}" target="_blank" rel="noopener noreferrer" class="repo-name">${escapeHtml(repo.name)}</a>
               </div>
               <p class="repo-desc">${escapeHtml(repo.description || "Sin descripción aún.")}</p>
@@ -124,6 +105,43 @@ const GITHUB_USER = "JPS4L4";
         });
     }
 
+    let lastFocusBeforeBrowser = null;
+    let lastFocusBeforeDetail = null;
+
+    function isOpen(modal) {
+        return !!modal && !modal.classList.contains("hidden");
+    }
+
+    function syncBodyScroll() {
+        document.body.style.overflow = isOpen(repoBrowserModal) || isOpen(repoDetailOverlay) ? "hidden" : "";
+    }
+
+    function focusableIn(root) {
+        return Array.from(root.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(el => !el.classList.contains("hidden") && el.offsetParent !== null);
+    }
+
+    // Mantiene el foco dentro del diálogo activo (el de detalle va por encima del explorador).
+    function trapFocus(event) {
+        if (event.key !== "Tab") return;
+        const active = isOpen(repoDetailOverlay) ? repoDetailOverlay : (isOpen(repoBrowserModal) ? repoBrowserModal : null);
+        if (!active) return;
+        const items = focusableIn(active);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!active.contains(document.activeElement)) {
+            event.preventDefault();
+            first.focus();
+        } else if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    }
+
     function openRepoDetailOverlay(repoId) {
         const repo = typeof repoId === "object"
             ? repoId
@@ -147,18 +165,25 @@ const GITHUB_USER = "JPS4L4";
             detailHomepage.classList.add("hidden");
         }
 
+        lastFocusBeforeDetail = document.activeElement;
         repoDetailOverlay.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
+        syncBodyScroll();
+        if (repoDetailCloseBtn) repoDetailCloseBtn.focus();
         history.pushState({ repoId: repo.id, detail: true }, "", `#repo-${encodeURIComponent(repo.name.replace(/\s+/g, "-"))}`);
     }
 
     function closeRepoDetailOverlay(updateHistory = true) {
         if (!repoDetailOverlay) return;
+        if (!isOpen(repoDetailOverlay)) return;
         repoDetailOverlay.classList.add("hidden");
-        document.body.style.overflow = "";
+        syncBodyScroll();
         if (updateHistory) {
             history.pushState(null, "", "#github");
         }
+        if (lastFocusBeforeDetail && document.contains(lastFocusBeforeDetail)) {
+            lastFocusBeforeDetail.focus();
+        }
+        lastFocusBeforeDetail = null;
     }
 
     function renderRepoSummary(repos) {
@@ -207,16 +232,23 @@ const GITHUB_USER = "JPS4L4";
 
     function openRepoBrowser() {
         if (!repoBrowserModal) return;
+        lastFocusBeforeBrowser = document.activeElement;
         repoBrowserModal.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
+        syncBodyScroll();
         renderRepoBrowserPage(currentRepoPage);
+        if (repoBrowserCloseBtn) repoBrowserCloseBtn.focus();
     }
 
     function closeRepoBrowser() {
         if (!repoBrowserModal) return;
+        if (!isOpen(repoBrowserModal)) return;
         repoBrowserModal.classList.add("hidden");
-        document.body.style.overflow = "";
+        syncBodyScroll();
         history.pushState(null, "", "#github");
+        if (lastFocusBeforeBrowser && document.contains(lastFocusBeforeBrowser)) {
+            lastFocusBeforeBrowser.focus();
+        }
+        lastFocusBeforeBrowser = null;
     }
 
     function handleInitialHash() {
@@ -249,12 +281,12 @@ const GITHUB_USER = "JPS4L4";
         }
     });
 
-                if (pageHeader && mainNav) {
+    if (pageHeader && mainNav) {
         const headerObserver = new IntersectionObserver(
             ([entry]) => updateNavMode(entry.isIntersecting),
             { threshold: 0.05 }
         );
-                headerObserver.observe(pageHeader);
+        headerObserver.observe(pageHeader);
     }
 
     window.addEventListener("resize", () => {
@@ -299,6 +331,7 @@ const GITHUB_USER = "JPS4L4";
     }
 
     window.addEventListener("keydown", (event) => {
+        trapFocus(event);
         if (event.key === "Escape") {
             if (repoDetailOverlay && !repoDetailOverlay.classList.contains("hidden")) {
                 closeRepoDetailOverlay();
@@ -344,13 +377,10 @@ const GITHUB_USER = "JPS4L4";
                     container.innerHTML = `
                         <div class="repo-error">
                           <p>No se pudieron cargar los repositorios.</p>
-                          <a href="https://github.com/${GITHUB_USER}" target="_blank" class="btn btn-ghost">Ver en GitHub →</a>
+                          <a href="https://github.com/${GITHUB_USER}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Ver en GitHub →</a>
                         </div>`;
                 }
             });
     }
 
     loadGithubRepos();
-
-    const cursor = document.querySelector(".t-cursor");
-    if (cursor) setInterval(() => cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0", 530);

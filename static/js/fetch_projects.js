@@ -4,26 +4,28 @@ function createProjectCard(project) {
     : "";
 
   const tags = (project.tags || [])
-    .map(tag => `<span class="project-tag">${tag}</span>`)
+    .map(tag => `<span class="project-tag">${escapeHtml(tag)}</span>`)
     .join("");
 
-  const demoLink = project.url
-    ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver demo</a>`
+  const demoUrl = safeUrl(project.url);
+  const demoLink = demoUrl
+    ? `<a href="${escapeHtml(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver demo</a>`
     : "";
 
-  const repoLink = project.repo
-    ? `<a href="${project.repo}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Código →</a>`
+  const repoUrl = safeUrl(project.repo);
+  const repoLink = repoUrl
+    ? `<a href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Código →</a>`
     : "";
 
   return `
-    <article class="project-card" data-reveal>
-      ${featuredBadge}
+    <article class="project-card${project.featured ? " is-featured" : ""}" data-reveal>
       <div class="project-card-image">
-        <img src="${project.image}" alt="Captura de ${project.name}" loading="lazy" />
+        ${featuredBadge}
+        <img src="${escapeHtml(project.image)}" alt="Captura de ${escapeHtml(project.name)}" loading="lazy" />
       </div>
       <div class="project-card-body">
-        <h3 class="project-card-title">${project.name}</h3>
-        <p class="project-card-desc">${project.description}</p>
+        <h3 class="project-card-title">${escapeHtml(project.name)}</h3>
+        <p class="project-card-desc">${escapeHtml(project.description)}</p>
         <div class="project-tags">${tags}</div>
         <div class="project-card-links">
           ${demoLink}
