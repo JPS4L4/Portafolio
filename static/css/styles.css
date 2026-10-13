@@ -694,7 +694,6 @@ section + section { border-top: 1px solid var(--line); }
   padding-top: 36px;
   border-top: 1px solid var(--line);
 }
-.skill-group:last-child { grid-column: 1 / -1; }
 .skill-group-title {
   margin-bottom: 14px;
   font-family: var(--font-mono);
@@ -713,9 +712,8 @@ section + section { border-top: 1px solid var(--line); }
 @media (hover: hover) and (pointer: fine) {
   .skill-tags span:hover { border-color: var(--accent-text); background: var(--accent-soft); }
 }
-@media (min-width: 1000px) {
-  .skills-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
-  .skill-group:last-child { grid-column: auto; }
+@media (min-width: 760px) {
+  .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 32px; }
 }
 
 /* ── Experiencia ────────────────────────────────────────────────────────── */

@@ -1,6 +1,20 @@
 {
     "jobs":[
     {
+        "charge": "Editor de Video y Desarrollador de Software",
+        "company": "Consolidando Propiedades SAS",
+        "location": "Medellín, Colombia · Presencial",
+        "period": "Sep 2026 - Presente",
+        "achievements":[
+            "Desarrollé de extremo a extremo (NestJS + Next.js) un módulo de archivos colaborativos para una plataforma SaaS: carpetas, compartir, equipos con roles, papelera, búsqueda y cuotas de almacenamiento.",
+            "Implementé reproducción de video de larga duración con streaming adaptativo (HLS) sobre almacenamiento de objetos en la nube (Cloudflare R2).",
+            "Diseñé un sistema de subidas y descargas masivas resistente a fallos: subidas idempotentes, arrastre de carpetas, cola con pausa, reintento y reanudación.",
+            "Construí un reproductor de revisión con comentarios anclados al instante del video, categorías, notas de voz y atajos de teclado para agilizar la retroalimentación entre equipos.",
+            "Personalicé el carrusel y las animaciones del tema de la tienda e-commerce en Shopify.",
+            "Realizo montaje, animaciones, corrección de color y edición de sonido para el contenido audiovisual de la empresa."
+        ]
+    },
+    {
         "charge": "Desarrollador de Soluciones de Software",
         "company": "Corbeta S.A",
         "location": " Medellín Antioquia",
