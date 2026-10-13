@@ -1,4 +1,5 @@
 import json
+import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request as UrlRequest, urlopen
@@ -29,13 +30,24 @@ async def read_index(request: FastAPIRequest):
         request=request,
     )
 
+GITHUB_CACHE_TTL = 600  # segundos (10 minutos)
+_github_cache = {"payload": None, "expires_at": 0.0}
+
+
 @app.get("/api/github/data")
-async def github_portfolio_data():
+def github_portfolio_data():
+    now = time.monotonic()
+    cached = _github_cache["payload"]
+    if cached is not None and now < _github_cache["expires_at"]:
+        return cached
+
     headers = {
-    "Accept": "application/vnd.github+json",
-    "User-Agent": "portfolio-app/1.0",
-    "Authorization": f"Bearer {os.environ.get('GITHUB_TOKEN')}",
-}
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "portfolio-app/1.0",
+    }
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
 
     def fetch_json(url: str):
         req = UrlRequest(url, headers=headers)
@@ -43,12 +55,19 @@ async def github_portfolio_data():
             return json.load(response)
 
     try:
-        repos = fetch_json("https://api.github.com/users/JPS4L4/repos")
+        repos = fetch_json(
+            "https://api.github.com/users/JPS4L4/repos?per_page=100&sort=updated"
+        )
         user = fetch_json("https://api.github.com/users/JPS4L4")
     except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as exc:
+        if cached is not None:
+            return cached
         return JSONResponse(status_code=502, content={"error": str(exc)})
 
-    return {"repos": repos, "user": user}
+    payload = {"repos": repos, "user": user}
+    _github_cache["payload"] = payload
+    _github_cache["expires_at"] = now + GITHUB_CACHE_TTL
+    return payload
 
 
 if __name__ == "__main__":

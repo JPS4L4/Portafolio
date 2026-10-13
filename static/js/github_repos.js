@@ -70,17 +70,36 @@ const GITHUB_USER = "JPS4L4";
         }
     }
 
+    function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>"']/g, ch => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[ch]));
+    }
+
+    function safeUrl(value) {
+        try {
+            const url = new URL(String(value ?? ""));
+            return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
+        } catch {
+            return "";
+        }
+    }
+
     function createRepoCard(repo, cardClass) {
         return `
-            <article class="repo-card ${cardClass}" data-repo-id="${repo.id}" role="button" tabindex="0">
+            <article class="repo-card ${cardClass}" data-repo-id="${escapeHtml(repo.id)}" role="button" tabindex="0">
               <div class="repo-top">
                 <span class="repo-icon">⬡</span>
-                <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
+                <a href="${escapeHtml(safeUrl(repo.html_url))}" target="_blank" rel="noopener noreferrer" class="repo-name">${escapeHtml(repo.name)}</a>
               </div>
-              <p class="repo-desc">${repo.description || "Sin descripción aún."}</p>
+              <p class="repo-desc">${escapeHtml(repo.description || "Sin descripción aún.")}</p>
               <div class="repo-meta">
-                ${repo.language ? `<span class="repo-lang"><span class="lang-dot"></span>${repo.language}</span>` : ""}
-                <span class="repo-stars">★ ${repo.stargazers_count}</span>
+                ${repo.language ? `<span class="repo-lang"><span class="lang-dot"></span>${escapeHtml(repo.language)}</span>` : ""}
+                <span class="repo-stars">★ ${escapeHtml(repo.stargazers_count)}</span>
                 <span class="repo-updated">↻ ${timeAgo(repo.updated_at)}</span>
               </div>
             </article>
@@ -118,10 +137,11 @@ const GITHUB_USER = "JPS4L4";
         detailForks.textContent = repo.forks_count;
         detailUpdated.textContent = formatDate(repo.updated_at);
         detailWatchers.textContent = repo.watchers_count;
-        detailGithub.href = repo.html_url;
+        detailGithub.href = safeUrl(repo.html_url);
 
-        if (repo.homepage) {
-            detailHomepage.href = repo.homepage;
+        const homepage = safeUrl(repo.homepage);
+        if (homepage) {
+            detailHomepage.href = homepage;
             detailHomepage.classList.remove("hidden");
         } else {
             detailHomepage.classList.add("hidden");
