@@ -1,23 +1,43 @@
 {
   "projects": [
     {
+      "id": "demo-hospital",
+      "name": "Meridiana · Red de clínicas",
+      "description": "Plataforma fullstack para una red de clínicas: reserva de citas sin dobles reservas (restricciones EXCLUDE de PostgreSQL), autenticación JWT con roles y un panel de analítica OLAP sobre un esquema en estrella con roll-up, drill-down y pivote. CI con tests de backend y frontend.",
+      "url": "",
+      "repo": "https://github.com/JPS4L4/Demo-Hospital",
+      "image": "static/images/projects/fotoDemoHospital.jpeg",
+      "tags": ["Angular", "FastAPI", "PostgreSQL", "SQLAlchemy", "Tailwind CSS"],
+      "featured": true
+    },
+    {
       "id": "tienda-fitness",
-      "name": "Tienda Fitness",
-      "description": "E-commerce fullstack con carrito, pagos con Stripe y MercadoPago y planes de nutrición/entrenamiento.",
+      "name": "Fitness Studio · Tienda online",
+      "description": "E-commerce fullstack de productos deportivos: catálogo con filtros y búsqueda, favoritos, carrito persistente con Zustand, registro e inicio de sesión con NextAuth (OAuth y verificación por correo) y pagos con Stripe y MercadoPago sobre PostgreSQL con Prisma.",
       "url": "https://tienda-fitness-pasarela-de-pagos-ca.vercel.app/",
       "repo": "https://github.com/JPS4L4/Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
       "image": "static/images/projects/fotoTiendaFitness.jpeg",
-      "tags": ["Next.js", "Prisma", "PostgreSQL", "Stripe"],
+      "tags": ["Next.js", "React", "Prisma", "PostgreSQL", "Stripe", "MercadoPago"],
       "featured": true
     },
     {
       "id": "gestion-inventario",
-      "name": "Sistema gestión de inventario",
-      "description": "Sistema de gestión de inventario funcional para una tienda física.",
-      "url": "https://sistema-de-gesti-n-de-inventarios-b-bice.vercel.app/",
+      "name": "Bodega · Gestión de inventario",
+      "description": "App de inventario para una tienda física: productos con validación, entradas y salidas de stock, historial de movimientos, informes con gráficos y exportación a CSV. Tema claro/oscuro y tests con Vitest.",
+      "url": "https://sistema-de-gesti-n-de-inventarios-b.vercel.app",
       "repo": "https://github.com/JPS4L4/Sistema-de-gesti-n-de-inventarios-b-sico",
       "image": "static/images/projects/fotoGestionInventario.jpeg",
-      "tags": ["HTML", "CSS", "TypeScript", "Vite"],
+      "tags": ["React", "TypeScript", "Vite", "Recharts", "Vitest"],
+      "featured": false
+    },
+    {
+      "id": "better-buffer",
+      "name": "Better-Buffer · Plugin para OBS",
+      "description": "Plugin de OBS Studio en C++ que lleva el replay buffer a cada fuente: cada cámara, juego o ventana graba con su propio encoder, bitrate y pista de audio, y guarda su clip listo para editar con la tecla de repetición.",
+      "url": "",
+      "repo": "https://github.com/JPS4L4/Better-Buffer",
+      "image": "static/images/projects/portadaBetterBuffer.svg",
+      "tags": ["C++", "OBS Studio API", "CMake", "GitHub Actions"],
       "featured": false
     }
   ]

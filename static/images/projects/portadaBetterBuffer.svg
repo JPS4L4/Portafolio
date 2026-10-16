@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="t">
+  <title id="t">Better-Buffer: un replay buffer por fuente en OBS Studio</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1a22"/>
+      <stop offset="1" stop-color="#14101c"/>
+    </linearGradient>
+    <linearGradient id="clip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0b525b"/>
+      <stop offset="1" stop-color="#006466"/>
+    </linearGradient>
+    <linearGradient id="clipB" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3e1f47"/>
+      <stop offset="1" stop-color="#4d194d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.15" r="0.7">
+      <stop offset="0" stop-color="#006466" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#006466" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#glow)"/>
+
+  <!-- Window -->
+  <rect x="80" y="70" width="1120" height="660" rx="18" fill="#0f171d" stroke="#24343d"/>
+  <rect x="80" y="70" width="1120" height="52" rx="18" fill="#131f27"/>
+  <rect x="80" y="104" width="1120" height="18" fill="#131f27"/>
+  <circle cx="114" cy="96" r="7" fill="#3a4a53"/>
+  <circle cx="138" cy="96" r="7" fill="#3a4a53"/>
+  <circle cx="162" cy="96" r="7" fill="#3a4a53"/>
+  <text x="640" y="102" text-anchor="middle" fill="#8aa3ad" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" letter-spacing="0.5">OBS Studio · Better-Buffer</text>
+
+  <!-- Title -->
+  <text x="130" y="186" fill="#e8f1f2" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" letter-spacing="-0.5">Replay buffer por fuente</text>
+  <text x="130" y="222" fill="#8aa3ad" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20">Cada fuente con su encoder, bitrate y pista de audio</text>
+
+  <!-- Save chip -->
+  <rect x="890" y="160" width="250" height="52" rx="26" fill="#006466"/>
+  <circle cx="922" cy="186" r="8" fill="#ff6b6b"/>
+  <text x="942" y="193" fill="#ffffff" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="19" font-weight="600">Guardar repetición</text>
+
+  <!-- Tracks -->
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <!-- Track 1 -->
+    <text x="130" y="300" fill="#c9d8dc" font-size="18" font-weight="600">Cámara</text>
+    <text x="130" y="324" fill="#6f8790" font-size="15">1080p · 12 Mbps · Mic</text>
+    <rect x="330" y="282" width="810" height="48" rx="10" fill="#16242c"/>
+    <rect x="610" y="282" width="530" height="48" rx="10" fill="url(#clip)"/>
+    <path d="M630 316 l12 -16 l12 10 l14 -18 l14 22 l12 -8 l12 14 l14 -20 l12 16 l14 -10 l12 12" fill="none" stroke="#9fe3e0" stroke-opacity="0.55" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Track 2 -->
+    <text x="130" y="404" fill="#c9d8dc" font-size="18" font-weight="600">Captura de juego</text>
+    <text x="130" y="428" fill="#6f8790" font-size="15">1440p · 20 Mbps · Escena</text>
+    <rect x="330" y="386" width="810" height="48" rx="10" fill="#16242c"/>
+    <rect x="460" y="386" width="680" height="48" rx="10" fill="url(#clipB)"/>
+    <g fill="#e2b6e2" fill-opacity="0.45">
+      <rect x="480" y="400" width="54" height="20" rx="3"/><rect x="542" y="400" width="54" height="20" rx="3"/>
+      <rect x="604" y="400" width="54" height="20" rx="3"/><rect x="666" y="400" width="54" height="20" rx="3"/>
+      <rect x="728" y="400" width="54" height="20" rx="3"/><rect x="790" y="400" width="54" height="20" rx="3"/>
+      <rect x="852" y="400" width="54" height="20" rx="3"/><rect x="914" y="400" width="54" height="20" rx="3"/>
+      <rect x="976" y="400" width="54" height="20" rx="3"/><rect x="1038" y="400" width="54" height="20" rx="3"/>
+    </g>
+
+    <!-- Track 3 -->
+    <text x="130" y="508" fill="#c9d8dc" font-size="18" font-weight="600">Ventana</text>
+    <text x="130" y="532" fill="#6f8790" font-size="15">720p · 6 Mbps · Desktop</text>
+    <rect x="330" y="490" width="810" height="48" rx="10" fill="#16242c"/>
+    <rect x="820" y="490" width="320" height="48" rx="10" fill="#1b3a4b"/>
+    <path d="M840 514 h280" stroke="#7fb7c9" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="6 6"/>
+
+    <!-- Playhead -->
+    <line x1="1140" y1="262" x2="1140" y2="556" stroke="#ff6b6b" stroke-width="2.5"/>
+    <circle cx="1140" cy="262" r="6" fill="#ff6b6b"/>
+
+    <!-- Time ruler -->
+    <g fill="#5b717a" font-size="14">
+      <text x="330" y="584">−60 s</text><text x="532" y="584">−45 s</text><text x="734" y="584">−30 s</text>
+      <text x="936" y="584">−15 s</text><text x="1122" y="584">0 s</text>
+    </g>
+
+    <!-- Output clips -->
+    <g font-size="15">
+      <rect x="130" y="624" width="300" height="56" rx="12" fill="#13232b" stroke="#24434d"/>
+      <text x="152" y="658" fill="#9fe3e0">camara_clip.mp4</text>
+      <rect x="450" y="624" width="330" height="56" rx="12" fill="#1b1424" stroke="#3e2a48"/>
+      <text x="472" y="658" fill="#e2b6e2">juego_clip.mp4</text>
+      <rect x="800" y="624" width="300" height="56" rx="12" fill="#13232b" stroke="#24434d"/>
+      <text x="822" y="658" fill="#a7cfdc">ventana_clip.mp4</text>
+    </g>
+  </g>
+</svg>

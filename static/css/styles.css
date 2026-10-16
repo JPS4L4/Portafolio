@@ -881,16 +881,19 @@ section + section { border-top: 1px solid var(--line); }
     border-right: 1px solid var(--line);
   }
   .project-card.is-featured .project-card-body { flex: 1; justify-content: center; }
-  /* Si queda un único proyecto normal, también ocupa el ancho completo (invertido) */
-  .project-card.is-featured ~ .project-card:last-child:nth-child(2) { grid-column: 1 / -1; flex-direction: row-reverse; }
-  .project-card.is-featured ~ .project-card:last-child:nth-child(2) .project-card-image {
+  /* Destacados consecutivos alternan el lado de la imagen */
+  .project-card.is-featured + .project-card.is-featured { flex-direction: row-reverse; }
+  .project-card.is-featured + .project-card.is-featured .project-card-image { border-right: 0; border-left: 1px solid var(--line); }
+  /* Si el último proyecto normal queda solo en su fila, ocupa el ancho completo (invertido) */
+  .project-card.is-featured ~ .project-card:not(.is-featured):last-child:nth-child(odd of :not(.is-featured)) { grid-column: 1 / -1; flex-direction: row-reverse; }
+  .project-card.is-featured ~ .project-card:not(.is-featured):last-child:nth-child(odd of :not(.is-featured)) .project-card-image {
     flex: 1.35;
     aspect-ratio: auto;
     min-height: 380px;
     border-bottom: 0;
     border-left: 1px solid var(--line);
   }
-  .project-card.is-featured ~ .project-card:last-child:nth-child(2) .project-card-body { flex: 1; justify-content: center; }
+  .project-card.is-featured ~ .project-card:not(.is-featured):last-child:nth-child(odd of :not(.is-featured)) .project-card-body { flex: 1; justify-content: center; }
 }
 
 /* ── GitHub ─────────────────────────────────────────────────────────────── */
