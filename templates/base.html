@@ -49,7 +49,8 @@
 
 <!-- ── Favicon ── -->
 <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg" />
-<link rel="icon" type="image/png" href="/static/images/favicon.png" />
+<link rel="icon" type="image/png" sizes="180x180" href="/static/images/favicon.png" />
+<link rel="apple-touch-icon" href="/static/images/favicon.png" />
 
 <!-- ── Fuentes ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -129,11 +130,11 @@
     </footer>
 
     {% block scripts %}
-    <script src="/static/js/utils.js"></script>
-    <script src="/static/js/fetch_projects.js"></script>
-    <script src="/static/js/fetch_jobs.js"></script>
-    <script src="/static/js/github_repos.js"></script>
-    <script src="/static/js/animations.js"></script>
+    <script defer src="/static/js/utils.js"></script>
+    <script defer src="/static/js/fetch_projects.js"></script>
+    <script defer src="/static/js/fetch_jobs.js"></script>
+    <script defer src="/static/js/github_repos.js"></script>
+    <script defer src="/static/js/animations.js"></script>
     <script type="module" src="/static/js/motion.js"></script>
     {% endblock %}
 </body>

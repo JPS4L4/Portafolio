@@ -21,7 +21,7 @@ function createProjectCard(project) {
     <article class="project-card${project.featured ? " is-featured" : ""}" data-reveal>
       <div class="project-card-image">
         ${featuredBadge}
-        <img src="${escapeHtml(project.image)}" alt="Captura de ${escapeHtml(project.name)}" loading="lazy" />
+        <img src="${escapeHtml(project.image)}" alt="Captura de ${escapeHtml(project.name)}" loading="lazy" decoding="async" width="1280" height="800" />
       </div>
       <div class="project-card-body">
         <h3 class="project-card-title">${escapeHtml(project.name)}</h3>

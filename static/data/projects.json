@@ -6,7 +6,7 @@
       "description": "Plataforma fullstack para una red de clínicas: reserva de citas sin dobles reservas (restricciones EXCLUDE de PostgreSQL), autenticación JWT con roles y un panel de analítica OLAP sobre un esquema en estrella con roll-up, drill-down y pivote. CI con tests de backend y frontend.",
       "url": "",
       "repo": "https://github.com/JPS4L4/Demo-Hospital",
-      "image": "static/images/projects/fotoDemoHospital.jpeg",
+      "image": "static/images/projects/fotoDemoHospital.webp",
       "tags": ["Angular", "FastAPI", "PostgreSQL", "SQLAlchemy", "Tailwind CSS"],
       "featured": true
     },
@@ -16,7 +16,7 @@
       "description": "E-commerce fullstack de productos deportivos: catálogo con filtros y búsqueda, favoritos, carrito persistente con Zustand, registro e inicio de sesión con NextAuth (OAuth y verificación por correo) y pagos con Stripe y MercadoPago sobre PostgreSQL con Prisma.",
       "url": "https://tienda-fitness-pasarela-de-pagos-ca.vercel.app/",
       "repo": "https://github.com/JPS4L4/Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
-      "image": "static/images/projects/fotoTiendaFitness.jpeg",
+      "image": "static/images/projects/fotoTiendaFitness.webp",
       "tags": ["Next.js", "React", "Prisma", "PostgreSQL", "Stripe", "MercadoPago"],
       "featured": true
     },
@@ -26,7 +26,7 @@
       "description": "App de inventario para una tienda física: productos con validación, entradas y salidas de stock, historial de movimientos, informes con gráficos y exportación a CSV. Tema claro/oscuro y tests con Vitest.",
       "url": "https://sistema-de-gesti-n-de-inventarios-b.vercel.app",
       "repo": "https://github.com/JPS4L4/Sistema-de-gesti-n-de-inventarios-b-sico",
-      "image": "static/images/projects/fotoGestionInventario.jpeg",
+      "image": "static/images/projects/fotoGestionInventario.webp",
       "tags": ["React", "TypeScript", "Vite", "Recharts", "Vitest"],
       "featured": false
     },
@@ -47,7 +47,7 @@
       "url": "https://jps4l4.github.io/faostat-diversidad-alimentaria/",
       "urlLabel": "Ver informe",
       "repo": "https://github.com/JPS4L4/faostat-diversidad-alimentaria",
-      "image": "static/images/projects/fotoFaoDiversidad.jpeg",
+      "image": "static/images/projects/fotoFaoDiversidad.webp",
       "tags": ["R", "R Markdown", "plm", "tidyverse", "Datos de panel", "Efectos fijos", "Wild cluster bootstrap", "Series de tiempo", "FAOSTAT"],
       "category": "datos",
       "featured": false
