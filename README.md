@@ -1,6 +1,6 @@
 # Portafolio personal
 
-Página de portafolio construida con Python y Jinja2, publicada como sitio estático en Cloudflare Pages
+Página de portafolio construida con Python y Jinja2, publicada como sitio estático en Cloudflare Workers
 (durante la transición `main.py` con FastAPI sigue sirviendo el mismo contenido en Render).
 
 ## Ejecutar localmente
@@ -46,15 +46,18 @@ uv run uvicorn main:app --reload
 
 `http://127.0.0.1:8000`
 
-## Despliegue en Cloudflare Pages
+## Despliegue en Cloudflare Workers
 
-1. En el dashboard de Cloudflare: **Workers & Pages → Create → Pages → Connect to Git** y elegir el repo `JPS4L4/Portafolio`.
+El sitio se publica como Worker de solo archivos estáticos; la configuración está en `wrangler.jsonc`
+(publica `dist/` y usa `404.html` para rutas inexistentes).
+
+1. En el dashboard de Cloudflare: **Workers & Pages → Create → Import a repository** y elegir el repo `JPS4L4/Portafolio`.
 2. Ajustes del build:
-   - Production branch: `main`
+   - Project name: `portafolio` (igual que `name` en `wrangler.jsonc`)
    - Build command: `pip install -r requirements-build.txt && python build.py`
-   - Build output directory: `dist`
-   - Variable de entorno (opcional): `PYTHON_VERSION` = `3.13` (si no, se usa `.python-version`).
-3. Cada push a `main` publica; el resto de ramas generan una vista previa.
+   - Deploy command: `npx wrangler deploy`
+   - Variable de build: `PYTHON_VERSION` = `3.13`.
+3. Cada push a `main` publica; con «Preview builds» activado, el resto de ramas generan una vista previa.
 
 No hace falta servidor: Render se retirará cuando el dominio apunte a Cloudflare.
 
@@ -79,7 +82,8 @@ Para regenerarlo en local: `python scripts/fetch_github_data.py` (`GITHUB_TOKEN`
 
 - `build.py`: genera `dist/` (sitio estático).
 - `scripts/fetch_github_data.py`: actualiza `static/data/github.json`.
-- `_headers`: caché y cabeceras de seguridad de Cloudflare Pages.
+- `wrangler.jsonc`: configuración del Worker de Cloudflare (archivos estáticos de `dist/`).
+- `_headers`: caché y cabeceras de seguridad que aplica Cloudflare.
 - `main.py`: backend FastAPI temporal (Render), se eliminará tras el cambio a Cloudflare.
 - `templates/`: vistas de Jinja2 (`404.html` incluida).
 - `static/`: estilos CSS, JavaScript, imágenes y datos (`static/data/`).
