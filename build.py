@@ -1,7 +1,7 @@
 """Genera el sitio estático en dist/ (lo publica Cloudflare; ver wrangler.jsonc).
 
 Renderiza las plantillas de templates/ con Jinja2, copia static/ y los
-archivos de Cloudflare (_headers). Solo necesita jinja2 (requirements-build.txt).
+archivos de la raíz (_headers, robots.txt, sitemap.xml). Solo necesita jinja2 (requirements-build.txt).
 
 Uso: python build.py
 """
@@ -19,7 +19,7 @@ DIST_DIR = BASE_DIR / "dist"
 # Plantillas que solo se heredan (no son páginas). Las páginas son el resto.
 LAYOUTS = {"base.html"}
 # Archivos de la raíz que Cloudflare lee desde la salida del build.
-CLOUDFLARE_FILES = ["_headers", "_redirects"]
+CLOUDFLARE_FILES = ["_headers", "_redirects", "robots.txt", "sitemap.xml"]
 
 
 def render_pages() -> list[str]:
