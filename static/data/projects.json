@@ -39,6 +39,18 @@
       "image": "static/images/projects/portadaBetterBuffer.svg",
       "tags": ["C++", "OBS Studio API", "CMake", "GitHub Actions"],
       "featured": false
+    },
+    {
+      "id": "fao-diversidad-alimentaria",
+      "name": "Diversidad alimentaria · Sudamérica",
+      "description": "Análisis de panel con datos de FAOSTAT (10 países, 2010-2023): ¿diversificar la oferta alimentaria se relaciona con más energía, grasa y mejor calidad? Dentro de cada país, +1 desviación estándar de diversidad se asocia con +74 kcal por persona al día y +11 g de grasa, sin relación con la calidad. Probado con efectos de año, primeras diferencias y bootstrap, más un pronóstico corto donde gana el modelo ingenuo. Asociativo, no causal. Proyecto universitario del ITM con Luz Ríos.",
+      "url": "https://jps4l4.github.io/faostat-diversidad-alimentaria/",
+      "urlLabel": "Ver informe",
+      "repo": "https://github.com/JPS4L4/faostat-diversidad-alimentaria",
+      "image": "static/images/projects/fotoFaoDiversidad.jpeg",
+      "tags": ["R", "R Markdown", "plm", "tidyverse", "Datos de panel", "Efectos fijos", "Wild cluster bootstrap", "Series de tiempo", "FAOSTAT"],
+      "category": "datos",
+      "featured": false
     }
   ]
 }
