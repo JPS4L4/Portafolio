@@ -800,6 +800,8 @@ section + section { border-top: 1px solid var(--line); }
 
 /* ── Proyectos ──────────────────────────────────────────────────────────── */
 .projects-section { background: var(--bg-sunk); }
+/* Ciencia de datos: mismo fondo que el resto, separado por la línea de sección */
+.data-section { background: var(--bg); }
 .projects-grid { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
 
 .project-card {
@@ -894,6 +896,19 @@ section + section { border-top: 1px solid var(--line); }
     border-left: 1px solid var(--line);
   }
   .project-card.is-featured ~ .project-card:not(.is-featured):last-child:nth-child(odd of :not(.is-featured)) .project-card-body { flex: 1; justify-content: center; }
+}
+
+/* Sección de ciencia de datos: una tarjeta a todo el ancho; la miniatura (1200x630) se ve completa, sin recorte */
+.projects-grid--single .project-card-image { aspect-ratio: 1200 / 630; background: #fff; }
+.projects-grid--single .project-card-image img { object-fit: contain; object-position: center; }
+@media (min-width: 900px) {
+  .projects-grid--single .project-card { grid-column: 1 / -1; flex-direction: row; }
+  .projects-grid--single .project-card-image {
+    flex: 0 0 58%;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+  .projects-grid--single .project-card-body { flex: 1; justify-content: center; }
 }
 
 /* ── GitHub ─────────────────────────────────────────────────────────────── */

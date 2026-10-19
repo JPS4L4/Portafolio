@@ -9,7 +9,7 @@ function createProjectCard(project) {
 
   const demoUrl = safeUrl(project.url);
   const demoLink = demoUrl
-    ? `<a href="${escapeHtml(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver demo</a>`
+    ? `<a href="${escapeHtml(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">${escapeHtml(project.urlLabel || "Ver demo")}</a>`
     : "";
 
   const repoUrl = safeUrl(project.repo);
@@ -38,6 +38,7 @@ function createProjectCard(project) {
 
 function loadProjects() {
   const container = document.getElementById("projects-grid");
+  const dataContainer = document.getElementById("data-projects-grid");
   if (!container) return;
 
   fetch("/static/data/projects.json")
@@ -53,13 +54,22 @@ function loadProjects() {
         return;
       }
 
+      // Los proyectos de ciencia de datos van en su propia sección
+      const dataProjects = projects.filter(project => project.category === "datos");
+      const devProjects = projects.filter(project => project.category !== "datos");
+
       // Destacados primero
-      const sorted = [...projects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+      const sorted = [...devProjects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
       container.innerHTML = sorted.map(createProjectCard).join("");
+
+      if (dataContainer) {
+        dataContainer.innerHTML = dataProjects.map(createProjectCard).join("");
+      }
 
       // Reactiva las animaciones data-reveal para las tarjetas nuevas
       if (typeof observeNewRevealElements === "function") {
         observeNewRevealElements(container);
+        if (dataContainer) observeNewRevealElements(dataContainer);
       }
     })
     .catch(() => {

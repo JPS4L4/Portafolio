@@ -311,8 +311,7 @@ function init({ animate, createTimeline, stagger, splitText, spring, utils }) {
       btn.addEventListener('pointerleave', () => { btn.style.translate = ''; });
     });
 
-    const projectGrid = document.getElementById('projects-grid');
-    if (projectGrid) {
+    $$('#projects-grid, #data-projects-grid').forEach((projectGrid) => {
       projectGrid.addEventListener('pointermove', (event) => {
         const card = event.target.closest && event.target.closest('.project-card');
         if (!card) return;
@@ -320,7 +319,7 @@ function init({ animate, createTimeline, stagger, splitText, spring, utils }) {
         card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
         card.style.setProperty('--my', `${event.clientY - rect.top}px`);
       }, { passive: true });
-    }
+    });
   }
 
   /* ── Icono del selector de tema: giro con resorte ───────────────────── */

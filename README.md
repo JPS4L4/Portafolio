@@ -36,6 +36,8 @@ uv run uvicorn main:app --reload
 
 - **Proyectos:** `static/data/projects.json`. Cada proyecto tiene los campos `id`, `name`,
   `description`, `url`, `repo`, `image`, `tags` (lista) y `featured` (`true`/`false`).
+  Opcionales: `urlLabel` (texto del botón de `url`, por defecto «Ver demo») y `category`: con
+  `"datos"` el proyecto aparece en la sección «Ciencia de datos» en vez de en «Proyectos destacados».
 - **Experiencia laboral:** `static/data/jobExperience.json`. Cada trabajo tiene los campos
   `charge`, `company`, `location`, `period` y `achievements` (lista de textos).
 
