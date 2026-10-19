@@ -354,7 +354,7 @@ const GITHUB_USER = "JPS4L4";
         const container = document.getElementById("github-repos");
         const repoCount = document.getElementById("repo-count");
 
-        fetch("/api/github/data")
+        fetch("/static/data/github.json")
             .then(res => {
                 if (!res.ok) throw new Error();
                 return res.json();
