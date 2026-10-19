@@ -1,0 +1,188 @@
+{
+  "repos": [
+    {
+      "id": 1282617447,
+      "name": "Portafolio",
+      "html_url": "https://github.com/JPS4L4/Portafolio",
+      "description": "Este es en pocas palabras el código báse de mi página de portafolio personal",
+      "language": "JavaScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-19T19:04:17Z",
+      "homepage": null
+    },
+    {
+      "id": 1426055304,
+      "name": "faostat-diversidad-alimentaria",
+      "html_url": "https://github.com/JPS4L4/faostat-diversidad-alimentaria",
+      "description": "Diversidad de la oferta alimentaria en Sudamérica (FAOSTAT, 2010-2023): análisis descriptivo, modelos de panel y pronóstico en R.",
+      "language": "R",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-19T19:04:04Z",
+      "homepage": "https://jps4l4.github.io/faostat-diversidad-alimentaria/"
+    },
+    {
+      "id": 1279538177,
+      "name": "Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
+      "html_url": "https://github.com/JPS4L4/Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
+      "description": "Tienda de fitness con Next.js, Prisma y PostgreSQL: catálogo, carrito, planes por suscripción y pagos con Stripe y Mercado Pago (precio calculado en el servidor, cierre de orden idempotente). Demo en vivo y CI.",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-16T21:09:02Z",
+      "homepage": "https://tienda-fitness-pasarela-de-pagos-ca.vercel.app"
+    },
+    {
+      "id": 766687223,
+      "name": "JPS4L4",
+      "html_url": "https://github.com/JPS4L4/JPS4L4",
+      "description": null,
+      "language": null,
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-16T21:09:01Z",
+      "homepage": null
+    },
+    {
+      "id": 1307245105,
+      "name": "Demo-Hospital",
+      "html_url": "https://github.com/JPS4L4/Demo-Hospital",
+      "description": "Este es un proyecto con el que busco demostrar mis habilidades con Python y Angular, me parece que una aplicación funcional de un hospital es la mejor opción para esto",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-15T22:40:57Z",
+      "homepage": null
+    },
+    {
+      "id": 1284599519,
+      "name": "Sistema-de-gesti-n-de-inventarios-b-sico",
+      "html_url": "https://github.com/JPS4L4/Sistema-de-gesti-n-de-inventarios-b-sico",
+      "description": "Es una pequeña prueba de un sistema de gestión de inventarios básico al cuál le iré añadiendo diversos componentes hasta convertirlo en un sistema robusto ",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-14T17:35:44Z",
+      "homepage": "https://sistema-de-gesti-n-de-inventarios-b.vercel.app"
+    },
+    {
+      "id": 1321195131,
+      "name": "Better-Buffer",
+      "html_url": "https://github.com/JPS4L4/Better-Buffer",
+      "description": "Extends OBS's replay buffer with per-source flexibility: pick any video source and any audio track OBS offers, and save clips exactly the way you want them.",
+      "language": "CMake",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-08-14T21:12:03Z",
+      "homepage": null
+    },
+    {
+      "id": 825538730,
+      "name": "myJsonRepo.github.io",
+      "html_url": "https://github.com/JPS4L4/myJsonRepo.github.io",
+      "description": null,
+      "language": null,
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2024-09-03T00:24:05Z",
+      "homepage": null
+    },
+    {
+      "id": 851354808,
+      "name": "next-13-strapi-udemy-course",
+      "html_url": "https://github.com/JPS4L4/next-13-strapi-udemy-course",
+      "description": "Proyecto dividido en 2 partes, este repositorio contiene el Frontend del proyecto, como su titulo lo indica se hace uso de Next y Strapi para el desarrollo, además se usa tailwind y flowbite para los estilos",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2024-09-03T00:18:49Z",
+      "homepage": "https://next-13-strapi-udemy-course.vercel.app"
+    },
+    {
+      "id": 791608553,
+      "name": "first-next-app",
+      "html_url": "https://github.com/JPS4L4/first-next-app",
+      "description": "MI primera aplicación usando el framework de Next con ContentLayer",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2024-05-07T03:55:28Z",
+      "homepage": null
+    },
+    {
+      "id": 776264588,
+      "name": "react-fb9-rrd6",
+      "html_url": "https://github.com/JPS4L4/react-fb9-rrd6",
+      "description": "Proyecto con firebase9 y react router 6",
+      "language": "JavaScript",
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "watchers_count": 1,
+      "updated_at": "2024-04-15T23:28:24Z",
+      "homepage": null
+    },
+    {
+      "id": 756658876,
+      "name": "simple-drag-n-drop-React",
+      "html_url": "https://github.com/JPS4L4/simple-drag-n-drop-React",
+      "description": "Drag-N-Drop usando la librería de hello-pangea/dnd",
+      "language": "JavaScript",
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "watchers_count": 1,
+      "updated_at": "2024-04-15T23:28:18Z",
+      "homepage": null
+    },
+    {
+      "id": 756142312,
+      "name": "todo-frontend-mentor-challenge",
+      "html_url": "https://github.com/JPS4L4/todo-frontend-mentor-challenge",
+      "description": "Reto de FrontEnd Mentor donde se buscar hacer una lista de tareas usando React y Tailwind",
+      "language": "JavaScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2024-02-12T03:28:48Z",
+      "homepage": null
+    },
+    {
+      "id": 750105134,
+      "name": "Agenda-Tareas-React",
+      "html_url": "https://github.com/JPS4L4/Agenda-Tareas-React",
+      "description": "Es el primer proyecto que realicé para empezar el estudio con React",
+      "language": "JavaScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2024-01-30T01:51:02Z",
+      "homepage": null
+    },
+    {
+      "id": 662373033,
+      "name": "locality",
+      "html_url": "https://github.com/JPS4L4/locality",
+      "description": "Tienda Virtual Web para Vendedores y Compradores",
+      "language": "JavaScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2023-07-05T02:12:01Z",
+      "homepage": null
+    }
+  ],
+  "user": {
+    "login": "JPS4L4",
+    "public_repos": 15
+  }
+}
