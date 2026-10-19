@@ -1,11 +1,9 @@
 # Portafolio personal
 
-Página de portafolio construida con Python y Jinja2, publicada como sitio estático en Cloudflare Workers
-(durante la transición `main.py` con FastAPI sigue sirviendo el mismo contenido en Render).
+Página de portafolio construida con Python y Jinja2, publicada como sitio estático en Cloudflare Workers:
+https://portafolio.devjuansalazar04.workers.dev/
 
 ## Ejecutar localmente
-
-### Sitio estático (recomendado)
 
 ```powershell
 pip install -r requirements-build.txt
@@ -16,35 +14,12 @@ python -m http.server -d dist 8000
 `build.py` renderiza `templates/` con Jinja2 en `dist/` y copia `static/` y `_headers`.
 Abrir `http://127.0.0.1:8000`. Repite `python build.py` tras cada cambio.
 
-### Servidor FastAPI (transición)
-
-1. (Opcional) Copiar la configuración de ejemplo y, si quieres, añadir tu token de GitHub:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-`GITHUB_TOKEN` es opcional: sin token la API de GitHub funciona, pero con un límite de peticiones menor.
-
-2. Con el entorno virtual:
-
-```powershell
-& .\.venv\Scripts\Activate.ps1
-uvicorn main:app --reload
-```
-
-También funciona `python main.py`.
-
-3. Alternativa con [uv](https://docs.astral.sh/uv/) (usa `pyproject.toml` y `uv.lock`):
+Alternativa con [uv](https://docs.astral.sh/uv/) (usa `pyproject.toml` y `uv.lock`):
 
 ```powershell
 uv sync
-uv run uvicorn main:app --reload
+uv run python build.py
 ```
-
-4. Abrir en el navegador:
-
-`http://127.0.0.1:8000`
 
 ## Despliegue en Cloudflare Workers
 
@@ -59,7 +34,7 @@ El sitio se publica como Worker de solo archivos estáticos; la configuración e
    - Variable de build: `PYTHON_VERSION` = `3.13`.
 3. Cada push a `main` publica; con «Preview builds» activado, el resto de ramas generan una vista previa.
 
-No hace falta servidor: Render se retirará cuando el dominio apunte a Cloudflare.
+No hace falta ningún servidor: todo el sitio se sirve como archivos estáticos.
 
 ### Datos de GitHub
 
@@ -84,6 +59,5 @@ Para regenerarlo en local: `python scripts/fetch_github_data.py` (`GITHUB_TOKEN`
 - `scripts/fetch_github_data.py`: actualiza `static/data/github.json`.
 - `wrangler.jsonc`: configuración del Worker de Cloudflare (archivos estáticos de `dist/`).
 - `_headers`: caché y cabeceras de seguridad que aplica Cloudflare.
-- `main.py`: backend FastAPI temporal (Render), se eliminará tras el cambio a Cloudflare.
 - `templates/`: vistas de Jinja2 (`404.html` incluida).
 - `static/`: estilos CSS, JavaScript, imágenes y datos (`static/data/`).
