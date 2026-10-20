@@ -1,6 +1,18 @@
 {
   "repos": [
     {
+      "id": 1427209305,
+      "name": "tuboleta_lakehouse",
+      "html_url": "https://github.com/JPS4L4/tuboleta_lakehouse",
+      "description": "Proyecto de la universidad relacionado con arquitectura de bases de datos ",
+      "language": "Python",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-20T16:11:19Z",
+      "homepage": null
+    },
+    {
       "id": 1282617447,
       "name": "Portafolio",
       "html_url": "https://github.com/JPS4L4/Portafolio",
@@ -9,7 +21,7 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "watchers_count": 0,
-      "updated_at": "2026-10-20T03:17:07Z",
+      "updated_at": "2026-10-20T10:54:06Z",
       "homepage": null
     },
     {
@@ -183,6 +195,6 @@
   ],
   "user": {
     "login": "JPS4L4",
-    "public_repos": 15
+    "public_repos": 16
   }
 }
