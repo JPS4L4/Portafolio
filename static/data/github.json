@@ -1,6 +1,18 @@
 {
   "repos": [
     {
+      "id": 1279538177,
+      "name": "Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
+      "html_url": "https://github.com/JPS4L4/Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
+      "description": "Tienda de fitness con Next.js, Prisma y PostgreSQL: catálogo, carrito, planes por suscripción y pagos con Stripe y Mercado Pago (precio calculado en el servidor, cierre de orden idempotente). Demo en vivo y CI.",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "watchers_count": 0,
+      "updated_at": "2026-10-20T20:04:25Z",
+      "homepage": "https://tienda-fitness-pasarela-de-pagos-ca.vercel.app"
+    },
+    {
       "id": 1427209305,
       "name": "tuboleta_lakehouse",
       "html_url": "https://github.com/JPS4L4/tuboleta_lakehouse",
@@ -9,7 +21,7 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "watchers_count": 0,
-      "updated_at": "2026-10-20T16:11:19Z",
+      "updated_at": "2026-10-20T19:41:49Z",
       "homepage": null
     },
     {
@@ -21,7 +33,7 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "watchers_count": 0,
-      "updated_at": "2026-10-20T10:54:06Z",
+      "updated_at": "2026-10-20T16:18:58Z",
       "homepage": null
     },
     {
@@ -35,18 +47,6 @@
       "watchers_count": 0,
       "updated_at": "2026-10-19T19:04:04Z",
       "homepage": "https://jps4l4.github.io/faostat-diversidad-alimentaria/"
-    },
-    {
-      "id": 1279538177,
-      "name": "Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
-      "html_url": "https://github.com/JPS4L4/Tienda-Fitness-Pasarela-de-pagos-Carrito-y-Registro-Usuario",
-      "description": "Tienda de fitness con Next.js, Prisma y PostgreSQL: catálogo, carrito, planes por suscripción y pagos con Stripe y Mercado Pago (precio calculado en el servidor, cierre de orden idempotente). Demo en vivo y CI.",
-      "language": "TypeScript",
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "watchers_count": 0,
-      "updated_at": "2026-10-16T21:09:02Z",
-      "homepage": "https://tienda-fitness-pasarela-de-pagos-ca.vercel.app"
     },
     {
       "id": 766687223,
