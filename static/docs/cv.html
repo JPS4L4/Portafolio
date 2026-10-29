@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>CV Juan Pablo Salazar Ceballos</title>
+<style>
+  @page { size: A4; margin: 14mm 15mm 14mm 15mm; }
+  :root { --ink: #111827; --muted: #4b5563; --soft: #6b7280; --accent: #5b5fe0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); font-size: 9.6pt; line-height: 1.42; background: #fff; }
+  header { text-align: center; margin-bottom: 10px; }
+  h1 { font-size: 25pt; margin: 0; letter-spacing: .5px; font-weight: 800; }
+  .role { color: var(--soft); font-size: 11pt; margin-top: 3px; }
+  .contact { color: var(--accent); font-size: 9pt; margin-top: 3px; }
+  .contact a { color: inherit; text-decoration: none; }
+  h2 { font-size: 11pt; font-weight: 800; margin: 13px 0 6px; padding-bottom: 3px; border-bottom: 1.5px solid var(--accent); }
+  p { margin: 0; }
+  .job { margin-top: 7px; page-break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 10pt; }
+  .dates { color: var(--muted); font-size: 9pt; white-space: nowrap; }
+  .org { color: var(--accent); font-size: 9pt; }
+  .context { color: var(--muted); margin: 2px 0 0; }
+  ul { list-style: none; margin: 3px 0 0; padding: 0 0 0 10px; }
+  li { position: relative; padding-left: 13px; margin-bottom: 2px; }
+  li::before { content: ""; position: absolute; left: 0; top: .45em; width: 7px; height: 7px; background: var(--accent); }
+  .stack { color: var(--muted); font-size: 8.8pt; margin-top: 3px; }
+  .stack b { color: var(--ink); }
+  .comp { color: var(--soft); font-size: 8.8pt; margin-top: 2px; }
+  table.skills { border-collapse: collapse; width: 100%; }
+  table.skills td { padding: 1.5px 0; vertical-align: top; }
+  table.skills td:first-child { font-weight: 700; width: 25%; }
+</style>
+</head>
+<body>
+<header>
+  <h1>JUAN PABLO SALAZAR CEBALLOS</h1>
+  <div class="role">Desarrollador Full Stack · TypeScript · NestJS · Next.js · Datos</div>
+  <div class="contact">+57 300 206 5618 · Bello, Antioquia · devjuansalazar04@gmail.com</div>
+  <div class="contact"><a href="https://github.com/JPS4L4">github.com/JPS4L4</a> · <a href="https://portafolio.devjuansalazar04.workers.dev">portafolio.devjuansalazar04.workers.dev</a> · <a href="https://www.linkedin.com/in/juan-pablo-salazar-ceballos-620140252/">linkedin.com/in/juan-pablo-salazar-ceballos-620140252</a></div>
+</header>
+
+<h2>PERFIL PROFESIONAL</h2>
+<p>Desarrollador Full Stack que construye producto de punta a punta en un CRM SaaS multi-tenant: microservicios NestJS sobre NATS y PostgreSQL, y un frontend Next.js cuidado en los detalles (animación, estados vacíos, accesibilidad y atajos de teclado). Antes automaticé procesos contables con Python, Power Automate y VBA y construí dashboards financieros en Power BI. Cursando 5.º semestre de Ingeniería en Ciencias de Datos en el ITM. Inglés B2 certificado por el SENA, con experiencia en equipos remotos y flujo de trabajo con Git y pull requests.</p>
+
+<h2>EXPERIENCIA LABORAL</h2>
+
+<div class="job">
+  <div class="job-head"><span class="job-title">Desarrollador Full Stack</span><span class="dates">Sep. 2026 – Presente</span></div>
+  <div class="org">Consolidando Propiedades S.A.S. · Medellín, Antioquia</div>
+  <p class="context">CRM SaaS multi-tenant: monorepo NestJS con más de 20 microservicios y frontend Next.js 15. Responsable del módulo de archivos y vídeo, de backend a interfaz.</p>
+  <ul>
+    <li>Amplié el <b>pipeline de transcodificación HLS</b> del worker de vídeo a una escalera 1080p/720p, publicando primero 720p para que el vídeo se pueda reproducir antes de terminar la calidad alta.</li>
+    <li>Desarrollé <b>comentarios anclados a un instante del vídeo</b>, con marcadores en la línea de tiempo, categorías de revisión, permisos de autor y notificaciones a quienes comparten el archivo.</li>
+    <li>Implementé <b>subidas multiparte</b> que ajustan el tamaño de las partes, subidas idempotentes, descarga múltiple y notas de voz.</li>
+    <li>Construí un <b>explorador de archivos manejable con teclado</b>: atajos, arrastrar y soltar, selección múltiple, favoritos y vista previa, además de una base de animación compartida.</li>
+    <li>Unos 200 commits en el primer mes, con tests (Jest y Vitest), lint y typecheck, en un flujo de ramas y pull requests (feature → develop → staging → main).</li>
+  </ul>
+  <div class="stack"><b>Stack:</b> TypeScript · NestJS · NATS · Prisma · PostgreSQL · S3/Cloudflare R2 · Next.js 15 · React · TanStack Query · Zustand · Tailwind CSS · shadcn/ui · hls.js · Docker · Jest · Vitest</div>
+</div>
+
+<div class="job">
+  <div class="job-head"><span class="job-title">Desarrollador de Software y Soluciones Digitales (RPA)</span><span class="dates">2023 – 2024</span></div>
+  <div class="org">Corbeta S.A. (Colombiana de Comercio) · Medellín, Antioquia</div>
+  <ul>
+    <li>Diseñé y desarrollé automatizaciones (RPA) de procesos contables con <b>Python</b>, <b>Power Automate</b> y <b>VBA</b>, reduciendo tiempos operativos y errores manuales.</li>
+    <li>Construí dashboards interactivos en <b>Power BI</b> con modelado de datos y DAX para visualizar KPIs financieros, apoyando la toma de decisiones gerenciales.</li>
+    <li>Integré múltiples fuentes de datos mediante pipelines <b>ETL</b>, garantizando consistencia, trazabilidad y calidad de la información.</li>
+    <li>Documenté procesos técnicos y entregué reportes ejecutivos a stakeholders no técnicos.</li>
+  </ul>
+</div>
+
+<h2>PROYECTOS DESTACADOS</h2>
+<ul>
+  <li><b>Meridiana · Demo Hospital</b> (FastAPI, SQLAlchemy, PostgreSQL, Angular): reserva de citas sin dobles reservas, autenticación JWT con Argon2id y roles, y panel de analítica sobre un esquema en estrella (OLTP y OLAP en el mismo PostgreSQL). CI con GitHub Actions. <span class="org">github.com/JPS4L4/Demo-Hospital</span></li>
+  <li><b>Fitness Studio</b> (Next.js, Prisma, PostgreSQL, NextAuth, Stripe, Mercado Pago): tienda en línea con precio calculado en el servidor y cierre de orden idempotente ante webhooks repetidos. Demo en vivo y CI. <span class="org">tienda-fitness-pasarela-de-pagos-ca.vercel.app</span></li>
+  <li><b>Better Buffer</b> (C/C++, CMake, OBS API): plugin de OBS Studio con un buffer de repetición por fuente, cada una con su propio encoder, bitrate y pista de audio. <span class="org">github.com/JPS4L4/Better-Buffer</span></li>
+  <li><b>Bodega</b> (React 19, TypeScript, Vite, Recharts): gestión de inventario con movimientos de stock, exportación a CSV e informes con gráficos. CI con GitHub Actions.</li>
+</ul>
+
+<h2>EDUCACIÓN Y CERTIFICACIONES</h2>
+<div class="job">
+  <div class="job-head"><span class="job-title">Ingeniería en Ciencias de Datos (5.º semestre)</span><span class="dates">2024 – Presente</span></div>
+  <div class="org">Instituto Tecnológico Metropolitano (ITM) · Medellín</div>
+</div>
+<div class="job">
+  <div class="job-head"><span class="job-title">Tecnólogo en Análisis y Desarrollo de Sistemas de Información</span><span class="dates">2022 – 2024</span></div>
+  <div class="org">SENA – CTMA · Medellín</div>
+  <div class="comp">Competencias: Construcción de software · Diseño de sistemas · Bases de datos · Calidad de software · Inglés técnico B2 · 880 h de práctica empresarial</div>
+</div>
+<div class="job">
+  <div class="job-head"><span class="job-title">Técnico en Sistemas</span><span class="dates">2021</span></div>
+  <div class="org">SENA – CTMA · Bello, Antioquia</div>
+  <div class="comp">Competencias: Redes físicas de datos · Mantenimiento de equipos · Herramientas informáticas · Inglés técnico</div>
+</div>
+
+<h2>HABILIDADES TÉCNICAS</h2>
+<table class="skills">
+  <tr><td>Lenguajes</td><td>TypeScript · JavaScript · Python · SQL · Java · C/C++ (básico)</td></tr>
+  <tr><td>Frontend</td><td>Next.js · React · Angular · Tailwind CSS · TanStack Query · Zustand · Framer Motion</td></tr>
+  <tr><td>Backend</td><td>NestJS · Node.js · FastAPI · microservicios con NATS · REST · JWT</td></tr>
+  <tr><td>Bases de datos</td><td>PostgreSQL · MySQL · Prisma · SQLAlchemy · modelado relacional y en estrella</td></tr>
+  <tr><td>Infraestructura y calidad</td><td>Docker · GitHub Actions · Jest · Vitest · pytest · ESLint</td></tr>
+  <tr><td>Datos y BI</td><td>Power BI (DAX) · ETL · Power Automate · Excel avanzado / VBA</td></tr>
+  <tr><td>Herramientas</td><td>Git · GitHub · VS Code</td></tr>
+  <tr><td>Idiomas</td><td>Español (nativo) · Inglés B2 – Certificado SENA</td></tr>
+</table>
+</body>
+</html>
